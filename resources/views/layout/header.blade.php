@@ -30,12 +30,12 @@
         <div class="container d-flex justify-content-center align-items-center">
             
             <div class="d-flex align-items-center">
-                <a href="tel:(510) 500-9000" id="phone-link">
-                    <i id="phone-icon" class="fas fa-phone-alt"></i> (510) 500-9000
+                <a href="tel:(321) 310-0141 id="phone-link">
+                    <i id="phone-icon" class="fas fa-phone-alt"></i> (321) 310-0141
                 </a>
                 <span id="divider">|</span>
-                <a href="mailto:sales@onixpackging.com" id="email-link">
-                    <i id="email-icon" class="fas fa-envelope"></i> sales@onixpackging.com
+                <a href="mailto:sales@onixpackaging.com" id="email-link">
+                    <i id="email-icon" class="fas fa-envelope"></i> sales@onixpackaging.com
                 </a>                
             </div>
         </div>

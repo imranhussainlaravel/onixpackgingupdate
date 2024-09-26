@@ -136,9 +136,9 @@
             <!-- Contact Section -->
             <div class="col-md-4">
                 <h5 class="mb-3">CONTACT US</h5>
-                <p><i class="bi bi-telephone-fill" style="color: #f76c6c;"></i> (510) 500-9533</p>
-                <p><i class="bi bi-envelope-fill" style="color: #f76c6c;"></i> sales@packingdesire.com</p>
-                <p><i class="bi bi-geo-alt-fill" style="color: #f76c6c;"></i> 39899 Balentine Drive Suite 200, Newark, CA 94560</p>
+                <p><i class="bi bi-telephone-fill" style="color: #f76c6c;"></i> (321) 310-0141</p>
+                <p><i class="bi bi-envelope-fill" style="color: #f76c6c;"></i> sales@onixpackaging.com</p>
+                <p><i class="bi bi-geo-alt-fill" style="color: #f76c6c;"></i> 7901 4th St N # 21594 St. Petersburg, FL 33702</p>
                 
                 <!-- Social Media Icons -->
                 <h6 class="mt-2">Follow Us:</h6>
