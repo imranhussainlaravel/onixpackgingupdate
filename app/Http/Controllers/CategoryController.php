@@ -50,4 +50,7 @@ class CategoryController extends Controller
 
         return view('finalp', compact('products'));
     }
+    public function team() {
+        return view('aboutteam');
+    }
 }
