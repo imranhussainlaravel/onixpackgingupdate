@@ -30,7 +30,7 @@
         <div class="container d-flex justify-content-center align-items-center">
             
             <div class="d-flex align-items-center">
-                <a href="tel:(321) 310-0141 id="phone-link">
+                <a href="tel:(321) 310-0141" id="phone-link">
                     <i id="phone-icon" class="fas fa-phone-alt"></i> (321) 310-0141
                 </a>
                 <span id="divider">|</span>
