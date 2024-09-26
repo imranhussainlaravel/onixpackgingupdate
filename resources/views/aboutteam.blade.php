@@ -115,11 +115,11 @@
                 <img src="{{ URL('images/profession.jpg')}}">
             </div>
             <div class="caption">
-                <h3>Isabella Reed</h3>
+                <h3>Carla spencer</h3>
                 <p>Marketing Head</p>
                 <div class="social-links">
-                    <a href="mailto:hamza.abrar104@gmail.com" id="email-k">
-                        isebellareed8971@gmail.com
+                    <a href="mailto:C.spencer@onixpackaging.com" id="email-k">
+                        C.spencer@onixpackaging.com
                     </a>    
                     {{-- <a href="#"><i class="fab fa-facebook"></i></a>
                     <a href="#"><i class="fab fa-instagram"></i></a>
@@ -132,11 +132,11 @@
                 <img src="{{ URL('images/operation.jpg')}}">
             </div>
             <div class="caption">
-                <h3>Imran Hussain</h3>
+                <h3>Christopher hughes</h3>
                 <p>Operations Head</p>
                 <div class="social-links">
-                    <a href="mailto:hamza.abrar104@gmail.com" id="email-k">
-                        dgeimran@gmail.com
+                    <a href="mailto:issachayes@onixpackaging.com" id="email-k">
+                        chris@onixpackaging.com
                     </a>    
                     {{-- <a href="#"><i class="fab fa-facebook"></i></a>
                     <a href="#"><i class="fab fa-instagram"></i></a>
