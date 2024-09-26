@@ -104,7 +104,7 @@
 
 
 <!-- resources/views/footer.blade.php -->
-<footer class="footer bg-dark text-light pt-5 pb-3">
+<footer class="footer text-light pt-5 pb-3" style="background-color: rgb(112, 111, 111)">
     <div class="container">
         <div class="row">
             <!-- Branding and Collaboration Message -->
