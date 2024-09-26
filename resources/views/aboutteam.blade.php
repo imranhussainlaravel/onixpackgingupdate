@@ -112,7 +112,7 @@
         </div>
         <div class="profile-card">
             <div class="img">
-                <img src="{{ URL('onixpackging/public/images/profession.jpg')}}">
+                <img src="{{ URL('images/profession.jpg')}}">
             </div>
             <div class="caption">
                 <h3>Carla spencer</h3>
