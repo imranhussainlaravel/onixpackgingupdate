@@ -11,9 +11,7 @@ use App\Http\kernel;
 
 
 
-// Route::get('/', function () {
-//     return view('admin.login');
-// });
+
 // Route::get('/', [CategoryController::class, 'index'])->name('index.home');
 // Route::get('/products', [CategoryController::class, 'show'])->name('product.show');
 // Route::get('/list/product', [CategoryController::class, 'final'])->name('index.home');
