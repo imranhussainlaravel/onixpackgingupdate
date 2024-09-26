@@ -153,7 +153,7 @@
     </div>
 </footer>
 <div class="text-center mt-1 bg-light" style="color:black;">
-    <p class="mb-0">&copy; 2024, www.packingdesire.com .All rights reserved.</p>
+    <p class="mb-0">&copy; 2024, www.onixpackaging.com .All rights reserved.</p>
 </div>
 
 

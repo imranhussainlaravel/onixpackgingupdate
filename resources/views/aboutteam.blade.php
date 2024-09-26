@@ -24,6 +24,16 @@ body {
     flex-wrap: wrap; /* To make sure items wrap on smaller screens */
     padding: 20px;
 }
+.mains h1 {
+        color: white;
+        font-size: 36px;
+        font-family: 'Exo', sans-serif;
+        margin-bottom: 0px;
+        text-align: center;
+        font-weight: bold;
+        background: linear-gradient(90deg, #e58b4d, #ffc1a0);
+        
+    }
 
 /* Profile Card Styling */
 .profile-card {
@@ -166,9 +176,10 @@ body {
 
     </style>
  
-
+    <div class="mains">
+        <h1>Meet Our Team</h1>
+    </div>
     <div class="main">
-        
         <div class="profile-card">
             <div class="img">
                 <img src="{{ URL('images/cofounder.jpg')}}">
@@ -222,7 +233,7 @@ body {
         </div>
     </div>
     <div class="text-center mt-1 bg-light" style="color:black;">
-        <p class="mb-0">&copy; 2024, www.packingdesire.com .All rights reserved.</p>
+        <p class="mb-0">&copy; 2024, www.onixpackaging.com .All rights reserved.</p>
     </div>
 
 </body>
