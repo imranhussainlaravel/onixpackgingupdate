@@ -1,7 +1,7 @@
 
 <div class="container text-center my-5">
     <h2 id="heading-title">ONE PLACE TO GET YOUR CUSTOM PACKAGING</h2>
-    <p>Packing Desire offers a variety of custom packaging solutions and project assistance with pricing and service you'll love.</p>
+    <p>Onix Packaging offers a variety of custom packaging solutions and project assistance with pricing and service you'll love.</p>
     
     <div class="row mt-5">
         <div class="col-md-2">
