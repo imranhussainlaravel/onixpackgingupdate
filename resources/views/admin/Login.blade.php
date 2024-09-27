@@ -6,7 +6,9 @@
 
   <meta charset="UTF-8"> 
 
-  <title>Admin login</title> 
+  <title>Admin login</title>
+  <link rel="icon" type="image/x-icon" href="{{ URL('images/logo.png') }}">
+
 
   <link rel="stylesheet" href="./style.css"> 
 
