@@ -221,9 +221,15 @@ class DashboardController extends Controller
         }
 
         $headerImgPath = parse_url($category->header_img, PHP_URL_PATH); // Get the path part of the URL
-        $fullPath = public_path($headerImgPath);
+        // $fullPath = public_path($headerImgPath);
         $mainImgPath = parse_url($category->main_img, PHP_URL_PATH); // Get the path part of the URL
-        $fullPath1 = public_path($mainImgPath);
+        // $fullPath1 = public_path($mainImgPath);
+
+        $baseUploadPath = '/home/onixuvjm/public_html';
+
+        $fullPath = $baseUploadPath . $headerImgPath;
+        $fullPath1 = $baseUploadPath . $mainImgPath;
+
         if ($fullPath) {
             File::delete($fullPath);
         }
