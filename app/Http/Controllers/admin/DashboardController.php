@@ -58,6 +58,7 @@ class DashboardController extends Controller
     }
     public function form(Request $request) {
         $uploadPath = '/home/onixuvjm/public_html/uploads/categories/';
+        $temppath = '/home/onixuvjm/public_html/uploads/temporary/';
         $validatedData = $request->validate([
             'title' => 'required|max:255',
             'description' => 'required|max:255',
@@ -74,15 +75,15 @@ class DashboardController extends Controller
         $main_img_name = time() . '2.' . $main_img->getClientOriginalExtension();
     
         // Move images to the temporary directory
-        $header_img->move('uploads/temporary/', $header_img_name);
-        $main_img->move('uploads/temporary/', $main_img_name);
+        $header_img->move($temppath, $header_img_name);
+        $main_img->move($temppath, $main_img_name);
     
         // Create an ImageManager instance
         $imgmanger = new ImageManager(new Driver());
     
         // Read the images from the temporary directory
-        $readimage1 = $imgmanger->read('uploads/temporary/' . $header_img_name);
-        $readimage2 = $imgmanger->read('uploads/temporary/' . $main_img_name);
+        $readimage1 = $imgmanger->read($temppath . $header_img_name);
+        $readimage2 = $imgmanger->read($temppath . $main_img_name);
     
         // Get original dimensions
         $originalWidth = $readimage1->width();
@@ -108,15 +109,25 @@ class DashboardController extends Controller
         $readimage2->cover($size, $size)->save($uploadPath . $main_img_name);
     
         // Cleanup temporary images
-        $imagePath1 = public_path('uploads/temporary/' . $header_img_name);
-        $imagePath2 = public_path('uploads/temporary/' . $main_img_name);
+        $imagePath1 = ($temppath . $header_img_name);
+        $imagePath2 = ($temppath . $main_img_name);
     
         // Check if temporary images exist before unlinking
-        if (File::exists($imagePath1)) {
-            unlink($imagePath1);
+        // if (File::exists($imagePath1)) {
+        //     unlink($imagePath1);
+        // }
+        // if (File::exists($imagePath2)) {
+        //     unlink($imagePath2);
+        // }
+        if (isset($imagePath1) && File::exists($imagePath1)) {
+            if (!File::delete($imagePath1)) {
+                \Log::error("Failed to delete temporary header image: " . $imagePath1);
+            }
         }
-        if (File::exists($imagePath2)) {
-            unlink($imagePath2);
+        if (isset($imagePath2) && File::exists($imagePath2)) {
+            if (!File::delete($imagePath2)) {
+                \Log::error("Failed to delete temporary main image: " . $imagePath2);
+            }
         }
     
         // Save the validated data and image paths in the database
