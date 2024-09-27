@@ -144,6 +144,8 @@ class DashboardController extends Controller
     }
     
     public function productform(Request $request) {
+        $uploadPath = '/home/onixuvjm/public_html/uploads/products/';
+        $temppath = '/home/onixuvjm/public_html/uploads/temporary/';
         $request->validate([
             'title' => 'required|max:255',
             'description' => 'required|max:255',
@@ -168,42 +170,61 @@ class DashboardController extends Controller
         $imagename4 = time().'4.'.$image1->getClientOriginalExtension();
 
 
-        $image1->move('uploads/temporary/',$imagename1);
-        $image2->move('uploads/temporary/',$imagename2);
-        $image3->move('uploads/temporary/',$imagename3);
-        $image4->move('uploads/temporary/',$imagename4);
+        $image1->move($temppath , $imagename1);
+        $image2->move($temppath , $imagename2);
+        $image3->move($temppath , $imagename3);
+        $image4->move($temppath , $imagename4);
 
 
         $imgmanger = new ImageManager(new Driver());
 
-        $readimage1 = $imgmanger->read('uploads/temporary/'.$imagename1);
-        $readimage2 = $imgmanger->read('uploads/temporary/'.$imagename2);
-        $readimage3 = $imgmanger->read('uploads/temporary/'.$imagename3);
-        $readimage4 = $imgmanger->read('uploads/temporary/'.$imagename4);
+        $readimage1 = $imgmanger->read($temppath . $imagename1);
+        $readimage2 = $imgmanger->read($temppath . $imagename2);
+        $readimage3 = $imgmanger->read($temppath . $imagename3);
+        $readimage4 = $imgmanger->read($temppath . $imagename4);
 
 
         $size = min($readimage1->width(), $readimage1->height()); // Get width and height after creating image instance
-        $readimage1->cover($size, $size)->save(public_path('uploads/products/'.$imagename1));
+        $readimage1->cover($size, $size)->save($uploadPath . $imagename1);
 
         $size = min($readimage2->width(), $readimage2->height()); // Get width and height after creating image instance
-        $readimage2->cover($size, $size)->save(public_path('uploads/products/'.$imagename2));
+        $readimage2->cover($size, $size)->save($uploadPath . $imagename2);
         
         $size = min($readimage3->width(), $readimage3->height()); // Get width and height after creating image instance
-        $readimage3->cover($size, $size)->save(public_path('uploads/products/'.$imagename3));
+        $readimage3->cover($size, $size)->save($uploadPath . $imagename3);
 
         $size = min($readimage4->width(), $readimage4->height()); // Get width and height after creating image instance
-        $readimage4->cover($size, $size)->save(public_path('uploads/products/'.$imagename4));
+        $readimage4->cover($size, $size)->save($uploadPath . $imagename4);
 
 
-        $imagePath1 = 'uploads/temporary/' . $imagename1;
-        $imagePath2 = 'uploads/temporary/' . $imagename2;
-        $imagePath3 = 'uploads/temporary/' . $imagename3;
-        $imagePath4 = 'uploads/temporary/' . $imagename4;
+        $imagePath1 = ($temppath . $imagename1);
+        $imagePath2 = ($temppath . $imagename2);
+        $imagePath3 = ($temppath . $imagename3);
+        $imagePath4 = ($temppath . $imagename4);
 
-        unlink($imagePath1);
-        unlink($imagePath2);
-        unlink($imagePath3);
-        unlink($imagePath4);
+        // unlink($imagePath1);
+        // unlink($imagePath2);
+        // unlink($imagePath3);
+        // unlink($imagePath4);
+        if (isset($imagePath1) && File::exists($imagePath1)) {
+            if (!File::delete($imagePath1)) {
+                \Log::error("Failed to delete temporary header image: " . $imagePath1);
+            }
+        }
+        if (isset($imagePath2) && File::exists($imagePath2)) {
+            if (!File::delete($imagePath2)) {
+                \Log::error("Failed to delete temporary main image: " . $imagePath2);
+            }
+        }
+        if (isset($imagePath3) && File::exists($imagePath3)) {
+            if (!File::delete($imagePath3)) {
+                \Log::error("Failed to delete temporary main image: " . $imagePath3);
+            }
+        }if (isset($imagePath4) && File::exists($imagePath4)) {
+            if (!File::delete($imagePath4)) {
+                \Log::error("Failed to delete temporary main image: " . $imagePath4);
+            }
+        }
 
 
        
