@@ -57,6 +57,7 @@ class DashboardController extends Controller
 
     }
     public function form(Request $request) {
+        $uploadPath = '/home/onixuvjm/public_html/uploads/categories/';
         $validatedData = $request->validate([
             'title' => 'required|max:255',
             'description' => 'required|max:255',
@@ -102,9 +103,9 @@ class DashboardController extends Controller
         }
     
         // Save resized images
-        $readimage1->cover($newWidth, $newHeight)->save(public_path('uploads/categories/' . $header_img_name));
+        $readimage1->cover($newWidth, $newHeight)->save($uploadPath . $header_img_name);
         $size = min($readimage2->width(), $readimage2->height());
-        $readimage2->cover($size, $size)->save(public_path('uploads/categories/' . $main_img_name));
+        $readimage2->cover($size, $size)->save($uploadPath . $main_img_name);
     
         // Cleanup temporary images
         $imagePath1 = public_path('uploads/temporary/' . $header_img_name);
