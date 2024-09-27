@@ -21,7 +21,6 @@ class EmailController extends Controller
             'depth' => 'nullable|string',
             'measurement_unit' => 'nullable|string',
             'description' => 'nullable|string',
-            '_answer' => 'required|captcha'
         ]);
         
         // Gather the email details
