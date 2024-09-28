@@ -286,15 +286,22 @@ class DashboardController extends Controller
             return redirect()->back()->withErrors('Product not found.'); // Handle case when product is not found
         }
 
+        $baseUploadPath = '/home/onixuvjm/public_html';
+
         $image1 = parse_url($product->image_1, PHP_URL_PATH); // Get the path part of the URL
-        $fullPath1 = public_path($image1);
+        // $fullPath1 = public_path($image1);
         $image2 = parse_url($product->image_2, PHP_URL_PATH); // Get the path part of the URL
-        $fullPath2 = public_path($image2);
+        // $fullPath2 = public_path($image2);
         $image3 = parse_url($product->image_3, PHP_URL_PATH); // Get the path part of the URL
-        $fullPath3 = public_path($image3);
+        // $fullPath3 = public_path($image3);
         $image4 = parse_url($product->image_4, PHP_URL_PATH); // Get the path part of the URL
-        $fullPath4 = public_path($image4);
+        // $fullPath4 = public_path($image4);
         
+        $fullPath1 = $baseUploadPath . $image1;
+        $fullPath2 = $baseUploadPath . $image2;
+        $fullPath3 = $baseUploadPath . $image3;
+        $fullPath4 = $baseUploadPath . $image4;
+
         if ($fullPath1) {
             File::delete($fullPath1);
         }

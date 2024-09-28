@@ -53,4 +53,7 @@ class CategoryController extends Controller
     public function team() {
         return view('aboutteam');
     }
+    public function thankyou() {
+        return view('thanku');
+    }
 }

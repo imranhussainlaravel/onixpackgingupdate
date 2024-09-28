@@ -23,6 +23,7 @@ Route::group([], function() {
     Route::get('/list/product/{id}', [CategoryController::class, 'final'])->name('product.final');
     Route::post('/sendemail', [EmailController::class, 'sendEmail'])->name('send.email');
     Route::get('/about-team',[CategoryController::class, 'team'])->name('about.team');
+    Route::get('/thankyou',[CategoryController::class, 'thankyou'])->name('thank.you');
 });
 
 // Route::group(['middleware' => 'adminre'], function() {
