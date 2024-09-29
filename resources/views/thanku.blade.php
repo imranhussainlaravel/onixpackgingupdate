@@ -12,7 +12,7 @@
           </div>
           
           <div class="thank-you-page-content">
-                                  <h2>Thank you !</h2>
+                                   <h2>Thank you !</h2>
             <h1>Your message has been sent to the Sales Team. We will process your request and contact you shortly</h1>
             <a href="{{ route('index.home') }}" class="btn btn-primary arrow-icon"> Go back to Homepage </a>
           </div>
