@@ -193,7 +193,7 @@ class EmailController extends Controller
                 $message->to($details['email'])
                         ->subject($details['subject']);
             });
-            Mail::html($htmlContent, function ($message) use ($details) {
+            Mail::html($htmlContentteam, function ($message) use ($details, $teamemail, $teamsubject) {
                 $message->to($teamemail)
                         ->subject($teamsubject);
             });
