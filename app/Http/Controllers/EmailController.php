@@ -11,6 +11,7 @@ class EmailController extends Controller
     {
         // Validate the incoming request data
         $request->validate([
+            'name' => 'required|string',
             'email' => 'required|email',
             'phone' => 'required|string',
             'product_name' => 'nullable|string',
@@ -25,6 +26,7 @@ class EmailController extends Controller
         
         // Gather the email details
         $details = [
+            'name' => $request->name,
             'email' => $request->email,
             'subject' => 'New Custom Quote Request',
             'phone' => $request->phone,
@@ -111,11 +113,89 @@ class EmailController extends Controller
         </body>
         </html>
         ";
+        $htmlContentteam = "
+        <html>
+        <head>
+            <style>
+                body {
+                    font-family: Arial, sans-serif;
+                    background-color: #f4f4f4;
+                    color: #333;
+                    text-align: center;
+                    padding: 20px;
+                }
+                h1 {
+                    font-size: 32px;
+                    font-weight: bold;
+                    color: #333;
+                    margin-bottom: 20px;
+                }
+                p {
+                    font-size: 18px;
+                    margin: 20px 0;
+                    text-align: center;
+                }
+                .details {
+                    text-align: left;
+                    margin: 0 auto;
+                    background-color: #fff;
+                    color: #333;
+                    padding: 20px;
+                    border-radius: 8px;
+                    max-width: 600px;
+                    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+                }
+                .details .field {
+                    margin-bottom: 15px;
+                }
+                .details .field strong {
+                    color: #4CAF50;
+                }
+            </style>
+        </head>
+        <body>
+            <h1>New Quote Request from Customer</h1>
+            <p>Here are the details submitted by the customer:</p>
+            <div class='details'>
+            <div class='field'>
+                    <strong>Name:</strong> <span>{$details['name']}</span>
+                </div>
+                <div class='field'>
+                    <strong>Customer Email:</strong> <span>{$details['email']}</span>
+                </div>
+                <div class='field'>
+                    <strong>Phone Number:</strong> <span>{$details['phone']}</span>
+                </div>
+                <div class='field'>
+                    <strong>Product Name:</strong> <span>{$details['product_name']}</span>
+                </div>
+                <div class='field'>
+                    <strong>Quantity:</strong> <span>{$details['quantity']}</span>
+                </div>
+                <div class='field'>
+                    <strong>Color:</strong> <span>{$details['color']}</span>
+                </div>
+                <div class='field'>
+                    <strong>Dimensions:</strong> <span>{$details['length']} x {$details['width']} x {$details['depth']} ({$details['measurement_unit']})</span>
+                </div>
+                <div class='field'>
+                    <strong>Description:</strong> <span>{$details['description']}</span>
+                </div>
+            </div>
+        </body>
+        </html>
+        ";     
+        $teamemail = 'sales@onixpackaging.com';
+        $teamsubject = 'New Custom Quote by customer';
 
         try {
             Mail::html($htmlContent, function ($message) use ($details) {
                 $message->to($details['email'])
                         ->subject($details['subject']);
+            });
+            Mail::html($htmlContent, function ($message) use ($details) {
+                $message->to($teamemail)
+                        ->subject($teamsubject);
             });
             // print_r("Email sent successfully");exit();
             // return back()->with('success', 'Email sent successfully!');
