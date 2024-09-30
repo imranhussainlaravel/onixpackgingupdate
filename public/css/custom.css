@@ -157,7 +157,7 @@
 .no-mask {
     mask-image: none;
     -webkit-mask-image: none;
-    background: inherit; /* Ensure it does not take any masked background */
+    background: transparent; /* Ensure it does not take any masked background */
     z-index: 1; /* Bring it on top if needed */
     position: relative; /* Adjust positioning to ensure it appears correctly */
 }
