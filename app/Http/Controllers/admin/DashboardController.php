@@ -61,7 +61,7 @@ class DashboardController extends Controller
         $temppath = '/home/onixuvjm/public_html/uploads/temporary/';
         $validatedData = $request->validate([
             'title' => 'required|max:255',
-            'description' => 'required|max:255',
+            'description' => 'required',
             'nav_id' => 'required|max:255',
             'header_img' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',  // Add image validation
             'main_img' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',    // Add image validation
@@ -148,7 +148,7 @@ class DashboardController extends Controller
         $temppath = '/home/onixuvjm/public_html/uploads/temporary/';
         $request->validate([
             'title' => 'required|max:255',
-            'description' => 'required|max:255',
+            'description' => 'required',
             'category_id' => 'required|max:255',
             'image_1' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',  // Add image validation
             'image_2' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',  // Add image validation
