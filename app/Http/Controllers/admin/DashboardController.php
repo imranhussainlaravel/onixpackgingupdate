@@ -321,5 +321,15 @@ class DashboardController extends Controller
         // Redirect back with success message
         return redirect()->back()->with('success', 'Product deleted successfully.');
     }
+    public function toggleStatus($id) {
+        $category = Categories::find($id);
+        
+        if ($category) {
+            $category->status = $category->status === 'active' ? 'inactive' : 'active';
+            $category->save();
+        }
+        
+        return redirect()->back();  // Redirect back to the page after updating the status
+    } 
     
 }

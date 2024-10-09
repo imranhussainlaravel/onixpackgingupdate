@@ -55,7 +55,15 @@
                                 <td>{{$category->id}}</td>
                                 <td>{{$category->title}}</td>
                                 <td>{{$category->nav_id}}</td>
-                                <td><span class="status active">Active</span></td>
+                                <td>
+                                    <form action="{{ route('category.toggle-status', $category->id) }}" method="POST">
+                                        @csrf
+                                        <button type="submit" class="status {{$category->status == 'active' ? 'active' : 'inactive'}}">
+                                            {{$category->status == 'active' ? 'Active' : 'Inactive'}}
+                                        </button>
+                                    </form>
+                                </td>
+
                                 {{-- <td><button class="btn-details">Delete</button><button class="btn-details" style="margin-left: 10px">Edit</button></td> --}}
                                 <td>
                                     <form action="{{ route('category.destroy', $category->id) }}" method="POST" style="display: inline;">

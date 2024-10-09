@@ -61,6 +61,7 @@ Route::group(['prefix' => 'admin'],function(){
         Route::post('productform', [DashboardController::class, 'productform'])->name('save.product');
         Route::get('category', [DashboardController::class, 'categories'])->name('admin.categoty');
         Route::get('product', [DashboardController::class, 'product'])->name('admin.product');
+        Route::post('/category/toggle-status/{id}', [DashboardController::class, 'toggleStatus'])->name('category.toggle-status');
 
         Route::delete('/category/delete/{id}', [DashboardController::class, 'categorydestroy'])->name('category.destroy');
         Route::delete('/product/delete/{id}', [DashboardController::class, 'productdestroy'])->name('product.destroy');
