@@ -30,7 +30,7 @@ class CategoryController extends Controller
 
         $productModel = new Product();
         $products = $productModel->select('id','title','image_1') // Select specific columns
-        ->where('category_id', $id) // Add the where condition
+        ->where('category_id', $id)->where('status', 'active') 
         ->get()                    // Retrieve the results
         ->toArray();   
         // echo $products->toSql();

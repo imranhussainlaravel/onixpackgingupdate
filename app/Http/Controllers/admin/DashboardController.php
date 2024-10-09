@@ -331,5 +331,15 @@ class DashboardController extends Controller
         
         return redirect()->back();  // Redirect back to the page after updating the status
     } 
+    public function toggleStatuspro($id) {
+        $Product = Product::find($id);
+        
+        if ($Product) {
+            $Product->status = $Product->status === 'active' ? 'inactive' : 'active';
+            $Product->save();
+        }
+        
+        return redirect()->back();  // Redirect back to the page after updating the status
+    } 
     
 }

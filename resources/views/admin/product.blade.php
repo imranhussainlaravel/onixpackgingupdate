@@ -55,7 +55,14 @@
                                     <td>{{$product->id}}</td>
                                     <td>{{$product->title}}</td>
                                     <td>{{$product->category_id}}</td>
-                                    <td><span class="status active">Active</span></td>
+                                    <td>
+                                        <form action="{{ route('product.toggle-status', $product->id) }}" method="POST">
+                                            @csrf
+                                            <button type="submit" class="status {{$product->status == 'active' ? 'active' : 'inactive'}}">
+                                                {{$product->status == 'active' ? 'Active' : 'Inactive'}}
+                                            </button>
+                                        </form>
+                                    </td>
                                     {{-- <td><button class="btn-details">Delete</button><button class="btn-details" style="margin-left: 10px">Edit</button></td> --}}
                                     <td>
                                         <form action="{{ route('product.destroy', $product->id) }}" method="POST" style="display: inline;">
