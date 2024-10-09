@@ -153,6 +153,18 @@
                     <canvas id="main_img_canvas" style="display:none;"></canvas>
                 </div> --}}
             </div>
+            <div class="form-group">
+                <label for="description">2nD Description</label>
+                <textarea id="description" name="description2" placeholder="Enter category 2nd description" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="main_img">Image 5 (1:1 Ratio) png(desc)</label>
+                <input type="file" id="main_img" name="image_5" accept="image/*" required>
+                {{-- <div>
+                    <img id="main_img_preview" class="img-preview" src="#" alt="Main Image Preview" style="display:none;">
+                    <canvas id="main_img_canvas" style="display:none;"></canvas>
+                </div> --}}
+            </div>
 
 
 

@@ -146,6 +146,8 @@ class DashboardController extends Controller
     public function productform(Request $request) {
         $uploadPath = '/home/onixuvjm/public_html/uploads/products/';
         $temppath = '/home/onixuvjm/public_html/uploads/temporary/';
+        // $uploadPath = 'uploads/products/';
+        // $temppath = 'uploads/temporary/';
         $request->validate([
             'title' => 'required|max:255',
             'description' => 'required',
@@ -154,6 +156,10 @@ class DashboardController extends Controller
             'image_2' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',  // Add image validation
             'image_3' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',  // Add image validation
             'image_4' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',  // Add image validation
+            'description2' => 'required',
+            'image_5' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',  // Add image validation
+
+
 
         ]);
     
@@ -163,17 +169,21 @@ class DashboardController extends Controller
         $image2 = $request->file('image_2');
         $image3 = $request->file('image_3');
         $image4 = $request->file('image_4');
+        $image5 = $request->file('image_5');
 
         $imagename1 = time().'1.'.$image1->getClientOriginalExtension();
-        $imagename2 = time().'2.'.$image1->getClientOriginalExtension();
-        $imagename3 = time().'3.'.$image1->getClientOriginalExtension();
-        $imagename4 = time().'4.'.$image1->getClientOriginalExtension();
+        $imagename2 = time().'2.'.$image2->getClientOriginalExtension();
+        $imagename3 = time().'3.'.$image3->getClientOriginalExtension();
+        $imagename4 = time().'4.'.$image4->getClientOriginalExtension();
+        $imagename5 = time().'5.'.$image5->getClientOriginalExtension();
 
 
         $image1->move($temppath , $imagename1);
         $image2->move($temppath , $imagename2);
         $image3->move($temppath , $imagename3);
         $image4->move($temppath , $imagename4);
+        $image5->move($temppath , $imagename5);
+
 
 
         $imgmanger = new ImageManager(new Driver());
@@ -182,6 +192,8 @@ class DashboardController extends Controller
         $readimage2 = $imgmanger->read($temppath . $imagename2);
         $readimage3 = $imgmanger->read($temppath . $imagename3);
         $readimage4 = $imgmanger->read($temppath . $imagename4);
+        $readimage5 = $imgmanger->read($temppath . $imagename5);
+
 
 
         $size = min($readimage1->width(), $readimage1->height()); // Get width and height after creating image instance
@@ -196,11 +208,16 @@ class DashboardController extends Controller
         $size = min($readimage4->width(), $readimage4->height()); // Get width and height after creating image instance
         $readimage4->cover($size, $size)->save($uploadPath . $imagename4);
 
+        $size = min($readimage4->width(), $readimage5->height()); // Get width and height after creating image instance
+        $readimage5->cover($size, $size)->save($uploadPath . $imagename5);
+
 
         $imagePath1 = ($temppath . $imagename1);
         $imagePath2 = ($temppath . $imagename2);
         $imagePath3 = ($temppath . $imagename3);
         $imagePath4 = ($temppath . $imagename4);
+        $imagePath5 = ($temppath . $imagename5);
+
 
         // unlink($imagePath1);
         // unlink($imagePath2);
@@ -224,6 +241,10 @@ class DashboardController extends Controller
             if (!File::delete($imagePath4)) {
                 \Log::error("Failed to delete temporary main image: " . $imagePath4);
             }
+        }if (isset($imagePath5) && File::exists($imagePath5)) {
+            if (!File::delete($imagePath5)) {
+                \Log::error("Failed to delete temporary main image: " . $imagePath5);
+            }
         }
 
 
@@ -236,6 +257,8 @@ class DashboardController extends Controller
         $product->image_2 = $imagename2 ? asset('uploads/products/' . $imagename2) : null;
         $product->image_3 = $imagename3 ? asset('uploads/products/' . $imagename3) : null;
         $product->image_4 = $imagename4 ? asset('uploads/products/' . $imagename4) : null;
+        $product->image_5 = $imagename5 ? asset('uploads/products/' . $imagename5) : null;
+        $product->description2 = $request['description2'];
         $product->save();
     
         // return redirect()->back()->with('success', 'Product saved successfully!');admin.dashboard
