@@ -117,7 +117,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <input class="form-control form-control-sm required mt-3" required name="contact_name" value id="name" placeholder="Name" name="name">
+                            <input type="text" class="form-control form-control-sm required mt-3" id="name" required placeholder="Name" name="name">
                         </div>
                         <div class="form-group input-placeholder">
                             <input type="text" class="form-control form-control-sm required mt-3" id="phone" required placeholder="Phone" name="phone">
