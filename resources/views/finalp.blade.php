@@ -208,7 +208,7 @@
 <div class="container my-5">
     <div class="row align-items-center">
         <div class="col-md-7">
-            <h1 class="display-4 fw-bold">{{ $products->heading2 }}</h1>
+            <h4 class="display-6 fw-bold">{{ $products->heading2 }}</h4>
             <p class="lead">
                 {{ $products->description2 ?? 'Kraft boxes with windows are the perfect modern packaging for any item. You can advertise your bakery, cosmetics, and grocery products via Kraft window boxes, and they will surely increase sales. Order Now!' }}
             </p>
