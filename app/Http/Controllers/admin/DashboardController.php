@@ -366,5 +366,22 @@ class DashboardController extends Controller
         
         return redirect()->back();  // Redirect back to the page after updating the status
     } 
-    
+    public function editCategory($id)
+    {
+        $category = Categories::find($id);  // Assuming your Category model is used
+        
+        return view('admin.editcategory', compact('category'));
+    }
+    public function updateCategory(Request $request, $id)
+    {
+        $category = Categories::find($id);
+        $category->title = $request->title;
+        $category->description = $request->description;
+        $category->nav_id = $request->nav_id;
+
+        $category->save();
+
+        return redirect()->route('admin.categoty')->with('success', 'Category updated successfully.');
+    }
+
 }

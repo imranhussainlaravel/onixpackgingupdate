@@ -67,7 +67,8 @@ Route::group(['prefix' => 'admin'],function(){
         Route::delete('/category/delete/{id}', [DashboardController::class, 'categorydestroy'])->name('category.destroy');
         Route::delete('/product/delete/{id}', [DashboardController::class, 'productdestroy'])->name('product.destroy');
 
-
+        Route::get('/category/edit/{id}', [DashboardController::class, 'editCategory'])->name('edit.category');
+        Route::put('/category/update/{id}', [DashboardController::class, 'updateCategory'])->name('update.form');
 
     });
 

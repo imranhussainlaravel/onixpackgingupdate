@@ -88,7 +88,7 @@
                                         @method('DELETE') <!-- This will allow us to specify the DELETE method -->
                                         <button type="submit" class="btn-details" style="margin-left: 10px; background-color: #df4b30; color: white;">Delete</button>
                                     </form>
-                                    <a href="" class="btn-details" style="margin-left: 10px; background-color: #4CAF50; color: white;">Edit</a>
+                                        <a href="{{ route('edit.category', $category->id) }}" class="btn-details" style="margin-left: 10px; background-color: #4CAF50; color: white;">Edit</a>
                                 </td>
                             </tr>
                             @endforeach
