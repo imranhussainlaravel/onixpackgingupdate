@@ -55,6 +55,19 @@
     .custom-id {
         font-size: 0.8rem; /* Adjust size if needed */
     }
+    .number-circle {
+        width: 50px;
+        height: 50px;
+        background-color: #f2b695;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        font-weight: bold;
+        color: white;
+        margin: 0 auto 15px;
+    }
 
 </style>
 
@@ -191,6 +204,57 @@
 
         </div>
     </div>
+</div>
+<div class="container my-5">
+    <div class="row align-items-center">
+        <div class="col-md-7">
+            <h1 class="display-4 fw-bold">{{ $products->heading2 }}</h1>
+            <p class="lead">
+                {{ $products->description2 ?? 'Kraft boxes with windows are the perfect modern packaging for any item. You can advertise your bakery, cosmetics, and grocery products via Kraft window boxes, and they will surely increase sales. Order Now!' }}
+            </p>
+            <p class="text-muted">More Than +5000 Satisfied Clients Worldwide</p>
+            <div class="d-flex flex-wrap my-3">
+                <!-- Client logos -->
+                {{-- <img src="{{ asset('images/client-logo-1.png') }}" alt="Client 1" class="img-fluid me-3" style="width: 50px;">
+                <img src="{{ asset('images/client-logo-2.png') }}" alt="Client 2" class="img-fluid me-3" style="width: 50px;">
+                <img src="{{ asset('images/client-logo-3.png') }}" alt="Client 3" class="img-fluid me-3" style="width: 50px;">
+                <img src="{{ asset('images/client-logo-4.png') }}" alt="Client 4" class="img-fluid me-3" style="width: 50px;">
+                <img src="{{ asset('images/client-logo-5.png') }}" alt="Client 5" class="img-fluid me-3" style="width: 50px;"> --}}
+            </div>
+            <div class="row my-5 text-center">
+                <div class="col-md-4">
+                    <div class="step">
+                        <div class="number-circle">1</div>
+                        <h3 class="fw-bold">Design</h3>
+                        <p>Get your custom boxes made in the required size, shape, and style.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="step">
+                        <div class="number-circle">2</div>
+                        <h3 class="fw-bold">Print</h3>
+                        <p>Upload your artwork and get it superbly printed the way you want.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="step">
+                        <div class="number-circle">3</div>
+                        <h3 class="fw-bold">Get it done</h3>
+                        <p>Order any quantity, enjoy a wholesale price, pay no extra for die plates.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-5">
+            {{-- <img src="{{ asset('images/' . $image ?? 'placeholder.png') }}" alt="Custom Box with Windows" class="img-fluid"> --}}
+            <img src="{{ $products->image_5}}" alt="Custom Box with Windows" class="img-fluid">
+
+        </div>
+        
+    </div>
+
+
 </div>
 
 <script>

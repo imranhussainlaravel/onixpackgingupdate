@@ -154,6 +154,10 @@
                 </div> --}}
             </div>
             <div class="form-group">
+                <label for="title">Heading Description</label>
+                <input type="text" id="title" name="heading2" placeholder="Enter Heading" required></input>
+            </div>
+            <div class="form-group">
                 <label for="description">2nD Description</label>
                 <textarea id="description" name="description2" placeholder="Enter category 2nd description" required></textarea>
             </div>

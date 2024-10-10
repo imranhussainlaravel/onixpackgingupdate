@@ -157,6 +157,7 @@ class DashboardController extends Controller
             'image_3' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',  // Add image validation
             'image_4' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',  // Add image validation
             'description2' => 'required',
+            'heading2' =>  'required',
             'image_5' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',  // Add image validation
 
 
@@ -259,6 +260,7 @@ class DashboardController extends Controller
         $product->image_4 = $imagename4 ? asset('uploads/products/' . $imagename4) : null;
         $product->image_5 = $imagename5 ? asset('uploads/products/' . $imagename5) : null;
         $product->description2 = $request['description2'];
+        $product->heading2 = $request['heading2'];
         $product->save();
     
         // return redirect()->back()->with('success', 'Product saved successfully!');admin.dashboard
