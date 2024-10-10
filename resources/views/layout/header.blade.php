@@ -50,7 +50,9 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="d-flex align-items-center">
+                <a href="{{ route('index.home') }}">
                 <img src="{{ URL('images/paclogo.png') }}" alt="Logo" class="img-fluid" style="max-width: 130px;">
+                </a>
             </div>
             <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
                
