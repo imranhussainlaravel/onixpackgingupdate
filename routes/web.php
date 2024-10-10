@@ -70,6 +70,9 @@ Route::group(['prefix' => 'admin'],function(){
         Route::get('/category/edit/{id}', [DashboardController::class, 'editCategory'])->name('edit.category');
         Route::put('/category/update/{id}', [DashboardController::class, 'updateCategory'])->name('update.form');
 
+        Route::get('/product/edit/{id}', [DashboardController::class, 'edit'])->name('edit.product');
+        Route::put('/product/update/{id}', [DashboardController::class, 'update'])->name('update.product');
+
     });
 
 });

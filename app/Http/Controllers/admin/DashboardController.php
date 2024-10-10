@@ -383,5 +383,45 @@ class DashboardController extends Controller
 
         return redirect()->route('admin.categoty')->with('success', 'Category updated successfully.');
     }
-
+    public function edit($id)
+    {
+        $product = Product::findOrFail($id);
+        $categories = Categories::all(); // Get all categories for the dropdown
+    
+        return view('admin.editproduct', compact('product', 'categories'));
+    }
+    
+    public function update(Request $request, $id)
+    {
+        $product = Product::findOrFail($id);
+    
+        // Validate the input data
+        $validatedData = $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'required|string',
+            'category_id' => 'required|exists:categories,id',
+            // Add validation for images if required
+        ]);
+    
+        // Update product data
+        $product->title = $validatedData['title'];
+        $product->description = $validatedData['description'];
+        $product->category_id = $validatedData['category_id'];
+        $product->heading2 = $request->input('heading2');
+        $product->description2 = $request->input('description2');
+    
+        // Handle image uploads (optional: if images are not being updated, you can skip this)
+        // for ($i = 1; $i <= 5; $i++) {
+        //     if ($request->hasFile('image_' . $i)) {
+        //         // Assuming images are saved in 'public/images/products'
+        //         $path = $request->file('image_' . $i)->store('products', 'public');
+        //         $product->{'image_' . $i} = $path; // Update the image path in the product
+        //     }
+        // }
+    
+        $product->save(); // Save updated product to the database
+    
+        return redirect()->route('admin.product')->with('success', 'Product updated successfully!');
+    }
+    
 }
