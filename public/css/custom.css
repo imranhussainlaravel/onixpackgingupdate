@@ -260,7 +260,7 @@ textarea.form-control {
 }
 
 .submit-btn:hover {
-    background-color: #ff7328; /* Darker yellow on hover */
+    background-color: #000000; /* Darker yellow on hover */
 }
 
 
@@ -346,7 +346,7 @@ ul.list-unstyled li {
 }
 
 .status.inactive {
-    background-color: red;  /* Use red for inactive status */
+    background-color: white;  /* Use red for inactive status */
     color: white;  /* Optionally, white text for inactive status */
 }
 
