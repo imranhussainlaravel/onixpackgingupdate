@@ -357,7 +357,7 @@ ul.list-unstyled li {
 
 
         /* Sticky Phone Icon Style */
-        .sticky-phone {
+        #sticky-phone {
             position: fixed;
             bottom: 20px; /* Distance from the bottom */
             left: 20px;   /* Distance from the left */
@@ -373,11 +373,11 @@ ul.list-unstyled li {
             justify-content: center;
         }
 
-        .sticky-phone a {
+        #sticky-phone a {
             color: white;
             text-decoration: none;
         }
-        .sticky-phone i {
+        #sticky-phone i {
             transform: scaleX(-1);
         }
 
