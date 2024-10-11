@@ -2,62 +2,32 @@
 @include('layout.header')
     <!-- Hero Section -->
 
-   <!-- //! halloween only --------------------------------------------------------------->
-   <div id="halloween-splash">
-    <span id="H">H</span>
-    <span id="A">A</span>
-    <span id="L">L</span>
-    <span id="A">L</span>
-    <span id="O">🎃</span>
-    <span id="W">W</span>
-    <span id="E">E</span>
-    <span id="N">E</span>
-    <span id="E">N</span>
-    </div>
-
-    <div id="main-content" style="display: none;">
-   <!-- //! halloween only --------------------------------------------------------------->
-
-
-        <div class="container-fluid text-white py-5 overflow-hidden" style="border-bottom-right-radius: 90px; background-color:#3c6fb1;">
-            <div class="container overflow-hidden">
-                <div class="row align-items-center">
-                    <!-- Text Section -->
-                    <div class="col-md-6 mb-4 mb-md-0">
-                        <h1 class="display-4 font-weight-bold" style="font-family: 'Raleway', sans-serif;">
-                            Custom boxes made easy <span class="font-weight-bold" style="color: #175a5a;">for retail</span>
-                        </h1>                              
-                        <p class="lead">
-                            Supercharge your brand through the power of custom boxes and custom packaging that's big on wow-factor. With low minimums, free design expertise, super-fast delivery, and unlimited customization.
-                        </p>
-                        <a class="btn btn-lg" 
-                            style="background-color: #175a5a; color: #ffffff;"
-                            onmouseover="this.style.backgroundColor='#0d3c3c'; this.style.color='#f9a171';" 
-                            onmouseout="this.style.backgroundColor='#175a5a'; this.style.color='#ffffff';"
-                            onclick="document.getElementById('custom-quote-form').scrollIntoView({behavior: 'smooth'});">
-                                Get Free Quote
-                        </a>
-                    </div>
-                    <!-- Image Section -->
-                    <div class="col-md-6 text-center">
-                        <img src="{{ URL('images/frontslider.png')}}" alt="Custom Boxes" class="img-fluid">
-                    </div>
-                </div>
+<div class="container-fluid text-white py-5 overflow-hidden" style="border-bottom-right-radius: 90px; background-color:#3c6fb1;">
+    <div class="container overflow-hidden">
+        <div class="row align-items-center">
+            <!-- Text Section -->
+            <div class="col-md-6 mb-4 mb-md-0">
+                <h1 class="display-4 font-weight-bold" style="font-family: 'Raleway', sans-serif;">
+                    Custom boxes made easy <span class="font-weight-bold" style="color: #175a5a;">for retail</span>
+                  </h1>                              
+                <p class="lead">
+                    Supercharge your brand through the power of custom boxes and custom packaging that's big on wow-factor. With low minimums, free design expertise, super-fast delivery, and unlimited customization.
+                </p>
+                <a class="btn btn-lg" 
+                    style="background-color: #175a5a; color: #ffffff;"
+                    onmouseover="this.style.backgroundColor='#0d3c3c'; this.style.color='#f9a171';" 
+                    onmouseout="this.style.backgroundColor='#175a5a'; this.style.color='#ffffff';"
+                    onclick="document.getElementById('custom-quote-form').scrollIntoView({behavior: 'smooth'});">
+                        Get Free Quote
+                </a>
+            </div>
+            <!-- Image Section -->
+            <div class="col-md-6 text-center">
+                <img src="{{ URL('images/frontslider.png')}}" alt="Custom Boxes" class="img-fluid">
             </div>
         </div>
-
-   <!-- //! halloween only --------------------------------------------------------------->
     </div>
-
-    <script>
-        // Hide splash screen after 3 seconds
-        setTimeout(function() {
-            document.getElementById('halloween-splash').classList.add('fade-out');
-            document.getElementById('main-content').style.display = 'block';
-        }, 3000); // Change to desired duration (3000ms = 3 seconds)
-    </script>
-   <!-- //! halloween only --------------------------------------------------------------->
-
+</div>
     
 
     <!-- Custom Rigid Boxes Section -->
