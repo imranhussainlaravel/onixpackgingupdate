@@ -110,8 +110,8 @@
             <!-- Branding and Collaboration Message -->
             <div class="col-md-4">
                 {{-- <div class="d-flex align-items-center mb-1"> --}}
-                <img src="{{ URL('images/paclogo.png') }}" alt="Logo" class="d-flex align-items-center"
-                    style="max-width: 190px;"> <!-- Replace with your logo path -->
+                <img src="{{ URL('images/paclogo2.png') }}" alt="Logo" class="d-flex align-items-center"
+                    style="max-width: 290px;"> <!-- Replace with your logo path -->
                 {{-- <h4 class="mb-0">Packaging</h4> --}}
                 {{-- </div> --}}
                 <p>We collaborate with people and brands.<br>Lets build something great together.</p>
