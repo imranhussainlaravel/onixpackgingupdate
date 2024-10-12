@@ -50,6 +50,85 @@
 .sticky-phone i {
     transform: scaleX(-1);
 }
+    /* Halloween Text Styling */
+    #halloween-splash {
+        font-size: 40px;
+        color: white;
+        letter-spacing: 0.7em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        z-index: 9999;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: black;
+    }
+
+    div > span {
+        opacity: 0.15;
+    }
+
+    #I {
+        opacity: 1;
+        animation: flickerI 1.5s linear reverse infinite;
+    }
+
+    #L, #G {
+        animation: flickerLG 1.5s linear reverse infinite;
+        position: relative;
+    }
+
+    #H, #T {
+        animation: flickerH 1.5s linear reverse infinite;
+    }
+    #E {
+        opacity: 1;
+        animation: flickerE 1.5s linear reverse infinite;
+    }
+    #O {
+        opacity: 1;
+        animation: flickerO 1.5s linear reverse infinite;
+    }
+
+
+    @keyframes flickerI {
+        0% { opacity: 0.4; }
+        100% { opacity: 1; }
+    }
+
+    @keyframes flickerLG {
+        0% { opacity: 0.19; }
+        100% { opacity: 0.4; }
+    }
+
+    @keyframes flickerH {
+        0% { opacity: 0.15; }
+        100% { opacity: 0.3; }
+    }
+
+    @keyframes flickerE {
+        0% { opacity: 0.15; }
+        100% { opacity: 0.3; }
+    }
+
+    @keyframes flickerO {
+        0% { opacity: 0.15; }
+        100% { opacity: 0.3; }
+    }
+
+    /* Fade-out effect for the splash screen */
+    .fade-out {
+        animation: fadeOut 3s forwards;
+    }
+
+    @keyframes fadeOut {
+        100% { opacity: 0; visibility: hidden; }
+    }
+
     </style>
 </head>
 <body>
