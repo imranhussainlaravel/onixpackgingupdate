@@ -25,6 +25,32 @@
 <!-- Include Bootstrap Icons CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css" rel="stylesheet"> 
 
+    <style>
+        /* Sticky Phone Icon Style */
+.sticky-phone {
+    position: fixed;
+    bottom: 20px; /* Distance from the bottom */
+    left: 20px;   /* Distance from the left */
+    background-color: #175a5a; /* Green background */
+    color: white;
+    padding: 10px 15px;
+    border-radius: 50%;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+    font-size: 24px; /* Adjust font size */
+    z-index: 1000; /* Ensure it's on top */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sticky-phone a {
+    color: white;
+    text-decoration: none;
+}
+.sticky-phone i {
+    transform: scaleX(-1);
+}
+    </style>
 </head>
 <body>
 
