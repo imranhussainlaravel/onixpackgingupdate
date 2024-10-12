@@ -25,6 +25,14 @@ Route::group([], function() {
     Route::get('/about-team',[CategoryController::class, 'team'])->name('about.team');
     Route::get('/thankyou',[CategoryController::class, 'thankyou'])->name('thank.you');
 });
+Route::get('/clear-all-caches', function () {
+    Artisan::call('cache:clear');
+    Artisan::call('view:clear');
+    Artisan::call('config:clear');
+    Artisan::call('route:clear');
+    return 'All caches cleared!';
+});
+
 
 // Route::group(['middleware' => 'adminre'], function() {
 //     Route::get('/', [CategoryController::class, 'index'])->name('index.home');
