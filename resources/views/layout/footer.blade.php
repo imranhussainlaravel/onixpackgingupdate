@@ -202,7 +202,7 @@
     </script>
     <!--End of Tawk.to Script-->
 
-    <div id="sticky-phone">
+    <div class="sticky-phone">
         <a href="tel:(321) 310-0141">
             <i class="fas fa-phone-alt"></i>
         </a>
