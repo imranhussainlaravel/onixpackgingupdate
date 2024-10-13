@@ -129,6 +129,107 @@
         100% { opacity: 0; visibility: hidden; }
     }
 
+    /* Halloween Splash */
+/* Halloween Splash */
+/* Floating Ghost */
+/* Floating Ghost */
+/* Floating Ghost */
+/* Floating Ghost */
+
+/* Floating Ghost */
+.ghost-container {
+    position: absolute;
+    top: 20%; /* Adjust starting vertical position */
+    left: -100px; /* Start off-screen to the left */
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 10; /* Ensures ghosts float above content */
+}
+
+.ghost {
+    position: absolute;
+    animation: float 15s infinite ease-in-out; /* Adjust duration for smooth movement */
+}
+
+.ghost-random {
+    position: absolute;
+    animation: random-float 15s infinite ease-in-out; /* Adjust duration for random movement */
+}
+
+.ghost img {
+    width: 80px; /* Adjust size */
+    opacity: 0.7; /* Transparency */
+}
+
+/* Keyframes for Smooth Floating Movement */
+@keyframes float {
+    0% {
+        left: -100px; /* Start off-screen */
+        top: 10%; /* Initial vertical position */
+    }
+    10% {
+        left: 10%; /* Move slightly to the right */
+        top: 5%; /* Move slightly up */
+    }
+    25% {
+        left: 30%; /* Move further to the right */
+        top: 15%; /* Move slightly up */
+    }
+    50% {
+        left: 50%; /* Middle position */
+        top: 10%; /* Centered vertically */
+    }
+    75% {
+        left: 70%; /* Move further to the right */
+        top: 20%; /* Move slightly up */
+    }
+    90% {
+        left: 90%; /* Near the right edge */
+        top: 5%; /* Move slightly down */
+    }
+    100% {
+        left: 100%; /* End off-screen to the right */
+        top: 30%; /* Return to original vertical position */
+    }
+}
+
+/* Keyframes for Random Floating Movement */
+@keyframes random-float {
+    0% {
+        right: -100px; /* Start off-screen */
+        top: 30%; /* Initial vertical position */
+    }
+    10% {
+        right: 10%; /* Move to the right */
+        top: 35%; /* Move slightly up */
+    }
+    30% {
+        right: 40%; /* Move further right */
+        top: 45%; /* Move slightly down */
+    }
+    50% {
+        right: 30%; /* Middle position */
+        top: 10%; /* Move slightly up */
+    }
+    70% {
+        right: 55%; /* Move further to the right */
+        top: 15%; /* Move slightly down */
+    }
+    80% {
+        right: 75%; /* Move further to the right */
+        top: 25%; /* Move slightly down */
+    }
+    90% {
+        right: 90%; /* End near the right edge */
+        top: 35%; /* Move slightly up */
+    }
+    100% {
+        right: 100%; /* Stay at the right edge */
+        top: 30%; /* Return to original vertical position */
+    }
+}
+
     </style>
 </head>
 <body>
