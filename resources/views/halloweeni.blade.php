@@ -41,11 +41,14 @@
     <div id="main-content" style="display: none;">
         <!-- //! halloween only --------------------------------------------------------------->
         <div class="container-fluid text-white py-5 overflow-hidden" 
-     style="border-bottom-right-radius: 90px; background-color:#3c6fb1; 
-            background-image: url('{{ URL('images/pumpkin2.png') }}'); 
-            background-size: cover; 
-            background-position: center; 
-            background-repeat: no-repeat;">
+        style="border-bottom-right-radius: 90px;
+       background: linear-gradient(90deg, #f76e1d 0%,#f97416 15%, #fd8612 25%, #ff8c11 75%, #ff8b10 100%);
+        background-image: url('{{ URL('images/pumpkin2.png') }}'), linear-gradient(90deg, #f76e1d 0%,#f97416 15%, #fd8612 25%, #ff8c11 75%, #ff8b10 100%);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;">
+ 
+ 
     <div class="container overflow-hidden">
         <div class="row align-items-center">
             <!-- Text Section -->
