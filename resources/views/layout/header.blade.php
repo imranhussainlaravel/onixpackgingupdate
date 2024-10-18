@@ -229,6 +229,9 @@
         top: 30%; /* Return to original vertical position */
     }
 }
+.navbar{
+    background: linear-gradient(90deg, #f76e1d 0%,#f97416 15%, #fd8612 25%, #ff8c11 75%, #ff8b10 100%);
+}
 
     </style>
 </head>

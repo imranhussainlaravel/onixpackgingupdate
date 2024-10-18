@@ -13,7 +13,7 @@ class CategoryController extends Controller
 
         $categories = Categories::where('status', 'active')->get();
 
-        return view('index' , compact('categories'));
+        return view('halloweeni' , compact('categories'));
 
     }
     public function show($id)

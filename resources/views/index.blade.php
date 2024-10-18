@@ -2,44 +2,6 @@
 @include('layout.header')
     <!-- Hero Section -->
 
-     <!-- //! halloween only --------------------------------------------------------------->
-   <div id="halloween-splash">
-    <span id="H">H</span>
-    <span id="A">A</span>
-    <span id="L">L</span>
-    <span id="A">L</span>
-    <span id="O">🎃</span>
-    <span id="W">W</span>
-    <span id="E">E</span>
-    <span id="N">E</span>
-    <span id="E">N</span>
-    </div>
-
-      <!-- Floating Ghosts -->
-      
-      {{-- <div class="ghost-container right-to-left">
-        <div class="ghost ghost1"><img src="{{ URL('images/ghost.png') }}" alt="Ghost"></div>
-    </div>
-    <div class="ghost-container left-to-right">
-        <div class="ghost ghost1"><img src="{{ URL('images/ghost.png') }}" alt="Ghost"></div>
-    </div> --}}
-    <!-- Ghost with Smooth Movement -->
-<div class="ghost-container">
-    <div class="ghost">
-        <img src="{{ URL('images/ghost.png') }}" alt="Ghost">
-    </div>
-</div>
-
-<!-- Ghost with Random Movement -->
-<div class="ghost-container">
-    <div class="ghost ghost-random">
-        <img src="{{ URL('images/ghost1.png') }}" alt="Ghost">
-    </div>
-</div>
-
-
-    <div id="main-content" style="display: none;">
-        <!-- //! halloween only --------------------------------------------------------------->
         <div class="container-fluid text-white py-5 overflow-hidden" style="border-bottom-right-radius: 90px; background-color:#3c6fb1;">
             <div class="container overflow-hidden">
                 <div class="row align-items-center">
@@ -98,43 +60,7 @@
                     </div>
                 </div>
             </section>
-        <!-- //! halloween only --------------------------------------------------------------->
-    </div>
-    <script>
-        // Hide splash screen after 3 seconds
-        setTimeout(function() {
-            document.getElementById('halloween-splash').classList.add('fade-out');
-            document.getElementById('main-content').style.display = 'block';
-        }, 3000); // Change to desired duration (3000ms = 3 seconds)
-    </script>
-    <script>
-        // Hide splash screen after 3 seconds
-        setTimeout(function() {
-            document.getElementById('halloween-splash').classList.add('fade-out');
-            document.getElementById('main-content').style.display = 'block';
-        }, 3000); // Change to desired duration (3000ms = 3 seconds)
 
-        // JavaScript for Random Movement
-        const randomGhost = document.querySelector('.random-ghost');
-
-        function getRandomPosition() {
-            const x = Math.random() * 100; // Get random position from 0% to 100%
-            const y = Math.random() * 100; // Get random position from 0% to 100%
-            return { x, y };
-        }
-
-        function moveGhost() {
-            const { x, y } = getRandomPosition();
-            randomGhost.style.left = `${x}%`;
-            randomGhost.style.top = `${y}%`;
-        }
-
-        // Move ghost at random intervals
-        setInterval(moveGhost, 2000); // Change position every 2 seconds
-    </script>
-
-        <!-- //! halloween only --------------------------------------------------------------->
-    
     
     
  
