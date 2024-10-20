@@ -333,26 +333,6 @@ ul.list-unstyled li {
     margin-bottom: 10px; /* Adjust the value to control the space */
 }
 
-.status {
-    cursor: pointer;
-    padding: 5px 10px;
-    border: none;
-    background-color: transparent;
-    color: black;
-    border-radius: 5px;
-}
-
-.status.active {
-    background-color: green;
-    color: white; /* Add this if you want white text for active status */
-}
-
-.status.inactive {
-    background-color: red;  /* Use red for inactive status */
-    color: white;  /* Optionally, white text for inactive status */
-}
-
-
 
 
 

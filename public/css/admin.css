@@ -208,7 +208,7 @@ body.dark-mode .theme-toggle-btn {
     color: white;
 }
 
-.status.pending {
+.status.inactive {
     background-color: #FFC107; /* Yellow */
 }
 .status.active {
