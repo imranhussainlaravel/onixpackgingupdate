@@ -232,6 +232,15 @@
 .navbar{
     background: linear-gradient(90deg, #f76e1d 0%,#f97416 15%, #fd8612 25%, #ff8c11 75%, #ff8b10 100%);
 }
+.custom-packaging {
+    /* background: linear-gradient(90deg, #083358, #0b446b); */
+    /* background: linear-gradient(90deg, #e58b4d, #fcd2b4); */
+    /* background: linear-gradient(90deg, #e58b4d, #ffc1a0); */
+    background: linear-gradient(90deg, #f76e1d 0%,#f97416 15%, #fd8612 25%, #ff8c11 75%, #ff8b10 100%);
+    padding: 40px 0;
+    position: relative;
+    overflow: hidden;
+}
 
     </style>
 </head>

@@ -111,14 +111,13 @@
 }
 
 
-.custom-packaging {
-    /* background: linear-gradient(90deg, #083358, #0b446b); */
-    /* background: linear-gradient(90deg, #e58b4d, #fcd2b4); */
+/* .custom-packaging {
+
     background: linear-gradient(90deg, #e58b4d, #ffc1a0);
     padding: 40px 0;
     position: relative;
     overflow: hidden;
-}
+} */
 .image-container {
     position: bottom;
     background: url('YOUR_IMAGE_PATH_HERE') no-repeat left center; /* Add your image path */
@@ -148,7 +147,8 @@
     border-radius: 10px;
 }
 #rowofp {
-    background-color: #f9b28c;
+    /* background-color: #f9b28c; */
+    background-color: #f88f20dd;
     border-radius: 40px 0px 0px 40px;
     mask-image: linear-gradient(to right, black 70%, transparent 100%);
     -webkit-mask-image: linear-gradient(to right, black 70%, transparent 100%);
