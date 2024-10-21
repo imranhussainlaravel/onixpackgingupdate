@@ -39,10 +39,15 @@ class DashboardController extends Controller
     }
     public function product() 
     {
+        $categorymodel = new Categories();
         $productmodel = new Product();
         $products = $productmodel->select('id', 'title', 'status', 'category_id')
             ->orderBy('id', 'DESC') // Assuming 'id' indicates the latest records
             ->get();
+        foreach ($products as $key => $pro){
+            $category = $categorymodel->select('title')->where('id', $pro->category_id)->first();
+            $products[$key]->category_name = $category->title;
+        }
         return view('admin.product', compact('products'));
 
         

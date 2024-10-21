@@ -54,7 +54,7 @@
                                 <tr>
                                     <td>{{$product->id}}</td>
                                     <td>{{$product->title}}</td>
-                                    <td>{{$product->category_id}}</td>
+                                    <td>{{$product->category_name}}</td>
                                     <td>
                                         <form action="{{ route('product.toggle-status', $product->id) }}" method="POST">
                                             @csrf
