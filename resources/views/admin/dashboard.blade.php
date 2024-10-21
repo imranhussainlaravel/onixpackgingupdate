@@ -73,7 +73,13 @@
                             <tr>
                                 <td>{{$category->id}}</td>
                                 <td>{{$category->title}}</td>
-                                <td>{{$category->nav_id}}</td>
+                                @if($category->nav_id == 1)
+                                    <td>Boxes by Industry</td>
+                                @elseif ($category->nav_id == 2)
+                                    <td>Boxes by Material</td>
+                                @else ($category->nav_id == 3)
+                                    <td>Boxes by Style</td>
+                                @endif
                                 <td>
                                     <form action="{{ route('category.toggle-status', $category->id) }}" method="POST">
                                         @csrf
