@@ -44,7 +44,7 @@
                             <tr>
                                 <th>#</th>
                                 <th>Tilte</th>
-                                <th>Nav</th>
+                                <th>Navbar</th>
                                 <th>Status</th>
                                 <th>Actions</th>
                             </tr>

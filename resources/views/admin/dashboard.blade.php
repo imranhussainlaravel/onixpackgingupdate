@@ -63,7 +63,7 @@
                             <tr>
                                 <th>#</th>
                                 <th>Title</th>
-                                <th>Nav</th>
+                                <th>Navbar</th>
                                 <th>Status</th>
                                 <th>Actions</th>
                             </tr>
