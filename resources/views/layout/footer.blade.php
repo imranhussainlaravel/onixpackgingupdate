@@ -49,7 +49,7 @@
                 <div id="icon-container">
                     <i id="benefit-icon" class="bi bi-brush"></i>
                 </div>
-                <h5>Free Graphic Designing</h5>
+                <h5>Free Design Support</h5>
             </div>
         </div>
     </div>
@@ -132,7 +132,7 @@
                     </li>
                     <li><a style=" text-decoration: none;" href="#" class="text-light">About Us</a></li>
                     <li><a style=" text-decoration: none;" href="#" class="text-light">Contact Us</a></li>
-                    <li><a style=" text-decoration: none;" href="#" class="text-light">Sitemap</a></li>
+                    {{-- <li><a style=" text-decoration: none;" href="#" class="text-light">Sitemap</a></li> --}}
                     <li><a style=" text-decoration: none;" href="#" class="text-light">Portfolio</a></li>
                 </ul>
             </div>
