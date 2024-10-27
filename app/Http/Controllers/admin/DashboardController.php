@@ -68,8 +68,9 @@ class DashboardController extends Controller
             'title' => 'required|max:255',
             'description' => 'required',
             'nav_id' => 'required|max:255',
-            'header_img' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',  // Add image validation
-            'main_img' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',    // Add image validation
+            'header_img' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:10240',  // 10 MB
+            'main_img' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:10240',  // 10 MB
+   // Add image validation
         ]);
     
         $header_img = $request->file('header_img');
@@ -157,13 +158,13 @@ class DashboardController extends Controller
             'title' => 'required|max:255',
             'description' => 'required',
             'category_id' => 'required|max:255',
-            'image_1' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',  // Add image validation
-            'image_2' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',  // Add image validation
-            'image_3' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',  // Add image validation
-            'image_4' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',  // Add image validation
+            'image_1' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:10240',  // Add image validation
+            'image_2' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:10240',  // Add image validation
+            'image_3' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:10240',  // Add image validation
+            'image_4' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:10240',  // Add image validation
             'description2' => 'required',
             'heading2' =>  'required',
-            'image_5' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',  // Add image validation
+            'image_5' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:10240',  // Add image validation
 
 
 
@@ -427,6 +428,9 @@ class DashboardController extends Controller
         $product->save(); // Save updated product to the database
     
         return redirect()->route('admin.product')->with('success', 'Product updated successfully!');
+    }
+    public function createblog() {
+        return view('admin.blog');
     }
     
 }
