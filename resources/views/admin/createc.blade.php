@@ -99,46 +99,61 @@
             <!-- Title -->
             <div class="form-group">
                 <label for="title">Title</label>
-                <input type="text" id="title" name="title" placeholder="Enter category title" required>
+                <input type="text" id="title" name="title" placeholder="Enter category title" required value="{{ old('title') }}">
+                @error('title')
+                    <div class="text-danger" style="color: red;">{{ $message }}</div>
+                @enderror
             </div>
 
             <!-- Description -->
             <div class="form-group">
                 <label for="description">Description</label>
-                <textarea id="description" name="description" placeholder="Enter category description" required></textarea>
+                <textarea id="description" name="description" placeholder="Enter category description" required>{{ old('description') }}</textarea>
+                @error('description')
+                    <div class="text-danger" style="color: red;">{{ $message }}</div>
+                @enderror
             </div>
 
             <!-- Nav ID (Dropdown) -->
             <div class="form-group">
                 <label for="nav_id">Navigation</label>
                 <select id="nav_id" name="nav_id" required>
-                    <option value="1">Boxes by Industry</option>
-                    <option value="2">Boxes by Material</option>
-                    <option value="3">Boxes by Style</option>
+                    <option value="1" {{ old('nav_id') == 1 ? 'selected' : '' }}>Boxes by Industry</option>
+                    <option value="2" {{ old('nav_id') == 2 ? 'selected' : '' }}>Boxes by Material</option>
+                    <option value="3" {{ old('nav_id') == 3 ? 'selected' : '' }}>Boxes by Style</option>
                     <!-- Add more options as needed -->
                 </select>
+                @error('nav_id')
+                    <div class="text-danger" style="color: red;">{{ $message }}</div>
+                @enderror
             </div>
 
-            <!-- Header Image (3:2 ratio) -->
+            <!-- Header Image (2:3 Ratio) -->
             <div class="form-group">
                 <label for="header_img">Header Image (2:3 Ratio)</label>
                 <input type="file" id="header_img" name="header_img" accept="image/*" required>
+                @error('header_img')
+                    <div class="text-danger" style="color: red;">{{ $message }}</div>
+                @enderror
                 <div>
                     <img id="header_img_preview" class="img-preview" src="#" alt="Header Image Preview" style="display:none;">
                     <canvas id="header_img_canvas" style="display:none;"></canvas>
                 </div>
             </div>
-            
+
+            <!-- Main Image (1:1 Ratio) -->
             <div class="form-group">
                 <label for="main_img">Main Image (1:1 Ratio)</label>
                 <input type="file" id="main_img" name="main_img" accept="image/*" required>
+                @error('main_img')
+                    <div class="text-danger" style="color: red;">{{ $message }}</div>
+                @enderror
                 <div>
                     <img id="main_img_preview" class="img-preview" src="#" alt="Main Image Preview" style="display:none;">
                     <canvas id="main_img_canvas" style="display:none;"></canvas>
                 </div>
             </div>
-            
-            
+
 
             <!-- Submit Button -->
             <div class="form-group">
