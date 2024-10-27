@@ -25,8 +25,9 @@ class AppServiceProvider extends ServiceProvider
         View::composer('layout.header', function ($view) {
             // Cache the navbar data to reduce database queries
             $navbarData = Cache::remember('navbar_data', 60, function () {
-                return Categories::all();
+                return Categories::where('status', 'active')->get();
             });
+            
 
             $nav1 = [];
             $nav2 = [];
