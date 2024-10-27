@@ -102,13 +102,19 @@
             <!-- Title -->
             <div class="form-group">
                 <label for="title">Title</label>
-                <input type="text" id="title" name="title" placeholder="Enter category title" required>
+                <input type="text" id="title" name="title" placeholder="Enter category title" required value="{{ old('title') }}">
+                @error('title')
+                    <div class="text-danger"  style="color: red;">{{ $message }}</div>
+                @enderror
             </div>
 
             <!-- Description -->
             <div class="form-group">
                 <label for="description">Description</label>
-                <textarea id="description" name="description" placeholder="Enter category description" required></textarea>
+                <textarea id="description" name="description" placeholder="Enter category description" required>{{ old('description') }}</textarea>
+                @error('description')
+                    <div class="text-danger"  style="color: red;">{{ $message }}</div>
+                @enderror
             </div>
 
             <!-- Nav ID (Dropdown) -->
@@ -116,14 +122,20 @@
                 <label for="nav_id">category</label>
                 <select id="nav_id" name="category_id" required>
                     @foreach ($categories as $category)
-                        <option value="{{$category->id}}">{{$category->title}}</option>
+                        <option value="{{ $category->id }}" {{ old('category_id') == $category->id ? 'selected' : '' }}>{{ $category->title }}</option>
                     @endforeach
                 </select>
+                @error('category_id')
+                    <div class="text-danger" style="color: red;">{{ $message }}</div>
+                @enderror
             </div>
 
             <div class="form-group">
                 <label for="main_img">Image 1 (1:1 Ratio)</label>
                 <input type="file" id="main_img" name="image_1" accept="image/*" required>
+                @error('image_1')
+                    <div class="text-danger" style="color: red;">{{ $message }}</div>
+                @enderror
                 {{-- <div>
                     <img id="main_img_preview" class="img-preview" src="#" alt="Main Image Preview" style="display:none;">
                     <canvas id="main_img_canvas" style="display:none;"></canvas>
@@ -132,6 +144,9 @@
             <div class="form-group">
                 <label for="main_img">Image 2 (1:1 Ratio)</label>
                 <input type="file" id="main_img" name="image_2" accept="image/*" required>
+                @error('image_2')
+                    <div class="text-danger" style="color: red;">{{ $message }}</div>
+                @enderror
                 {{-- <div>
                     <img id="main_img_preview" class="img-preview" src="#" alt="Main Image Preview" style="display:none;">
                     <canvas id="main_img_canvas" style="display:none;"></canvas>
@@ -140,6 +155,9 @@
             <div class="form-group">
                 <label for="main_img">Image 3 (1:1 Ratio)</label>
                 <input type="file" id="main_img" name="image_3" accept="image/*" required>
+                @error('image_3')
+                    <div class="text-danger" style="color: red;">{{ $message }}</div>
+                @enderror
                 {{-- <div>
                     <img id="main_img_preview" class="img-preview" src="#" alt="Main Image Preview" style="display:none;">
                     <canvas id="main_img_canvas" style="display:none;"></canvas>
@@ -148,6 +166,9 @@
             <div class="form-group">
                 <label for="main_img">Image 4 (1:1 Ratio)</label>
                 <input type="file" id="main_img" name="image_4" accept="image/*" required>
+                @error('image_4')
+                    <div class="text-danger" style="color: red;">{{ $message }}</div>
+                @enderror
                 {{-- <div>
                     <img id="main_img_preview" class="img-preview" src="#" alt="Main Image Preview" style="display:none;">
                     <canvas id="main_img_canvas" style="display:none;"></canvas>
@@ -155,15 +176,24 @@
             </div>
             <div class="form-group">
                 <label for="title">Heading Description</label>
-                <input type="text" id="title" name="heading2" placeholder="Enter Heading" required></input>
+                <input type="text" id="title" name="heading2" placeholder="Enter Heading" required value="{{ old('heading2') }}"></input>
+                @error('heading2')
+                    <div class="text-danger" style="color: red;">{{ $message }}</div>
+                @enderror
             </div>
             <div class="form-group">
                 <label for="description">2nD Description</label>
-                <textarea id="description" name="description2" placeholder="Enter category 2nd description" required></textarea>
-            </div>
+                <textarea id="description2" name="description2" placeholder="Enter category 2nd description" required>{{ old('description2') }}</textarea>
+                @error('description2')
+                    <div class="text-danger" style="color: red;">{{ $message }}</div>
+                @enderror
+             </div>
             <div class="form-group">
                 <label for="main_img">Image 5 (1:1 Ratio) png(desc)</label>
                 <input type="file" id="main_img" name="image_5" accept="image/*" required>
+                @error('image_5')
+                    <div class="text-danger" style="color: red;">{{ $message }}</div>
+                @enderror
                 {{-- <div>
                     <img id="main_img_preview" class="img-preview" src="#" alt="Main Image Preview" style="display:none;">
                     <canvas id="main_img_canvas" style="display:none;"></canvas>
