@@ -107,7 +107,7 @@ body.dark-mode .theme-toggle-btn {
 }
 
 .card {
-    background-color: #1e1e1e; /* Dark card background */
+    background-color: #1e1e1e !important; /* Dark card background */
     border-radius: 8px;
     padding: 10px;
     text-align: center;
