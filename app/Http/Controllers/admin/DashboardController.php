@@ -442,10 +442,10 @@ class DashboardController extends Controller
     }
     public function saveblog(Request $request){
 
-        // $uploadPath = '/home/onixuvjm/public_html/uploads/blog/';
-        // $temppath = '/home/onixuvjm/public_html/uploads/temporary/';
-         $uploadPath = 'uploads/blog/';
-        $temppath = 'uploads/temporary/';
+        $uploadPath = '/home/onixuvjm/public_html/uploads/blog/';
+        $temppath = '/home/onixuvjm/public_html/uploads/temporary/';
+        //  $uploadPath = 'uploads/blog/';
+        // $temppath = 'uploads/temporary/';
         $request->validate([
             'title' =>'required|string|max:255',
             'main_img' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:10240',  // 10 MB
