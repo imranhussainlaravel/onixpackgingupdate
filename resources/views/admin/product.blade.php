@@ -38,6 +38,14 @@
         <div class="main-content" id="main-content">
             <div id="app-container">
                 <!-- Dashboard Stats -->
+                @if(session('success'))
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        {{ session('success') }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                @endif
                 <!-- Active Users Table -->
                 <div id="table-container">
                     <header class="table-header">
