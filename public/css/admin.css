@@ -233,3 +233,80 @@ body.dark-mode .theme-toggle-btn {
     background-color: #5a5a5a; /* Button hover color */
 
 }
+.editor-container {
+    height: 90vh;
+}
+
+
+.form-container {
+    background-color: #1e1e1e;
+    padding: 20px;
+    border-radius: 8px;
+    width: 500px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.form-group input[type="text"],
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    background-color: #2a2a2a;
+    border: 1px solid #444;
+    color: #e0e0e0;
+    border-radius: 5px;
+}
+
+.form-group textarea {
+    height: 100px;
+}
+
+.form-group input[type="file"] {
+    border: none;
+    background-color: #1e1e1e;
+}
+
+.img-preview {
+    display: block;
+    margin-top: 10px;
+    border-radius: 8px;
+}
+
+/* Image ratio styles */
+#main_img_preview {
+    width: 300px;
+    height: 300px; /* 1:1 aspect ratio */
+    object-fit: cover;
+}
+
+#header_img_preview {
+width: 300px;  /* Example width */
+height: 450px; /* 2:3 aspect ratio */
+object-fit: cover;
+}
+
+.form-group button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.form-group button:hover {
+    background-color: #45a049;
+}

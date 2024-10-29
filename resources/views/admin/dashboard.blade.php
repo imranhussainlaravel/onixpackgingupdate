@@ -20,6 +20,7 @@
                 <li style="font-weight: bold;"><a href="{{ route('admin.dashboard')}}" style="color: rgb(242, 210, 52);"><i class="fas fa-home" ></i> Dashboard</a></li>
                 <li><a href="{{ route('admin.categoty')}}"><i class="fas fa-table"></i> Categories</a></li>
                 <li><a href="{{ route('admin.product')}}"><i class="fas fa-tasks"></i> Product</a></li>
+                <li><a href="{{ route('admin.blogpage')}}"><i class="fas fa-blog"></i>Blog</a></li>
                 <li><a href="#"><i class="fas fa-users"></i> Users</a></li>
                 <li><a href="#"><i class="fas fa-cogs"></i> Settings</a></li>
                 <li><a href="{{route('admin.logout')}}"><i class="fas fa-sign-out-alt"></i> Logout</a></li>

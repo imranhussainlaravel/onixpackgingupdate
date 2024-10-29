@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Categories;
+use App\Models\Blog;
 use App\Models\Product;
 use Intervention\Image\Facades\Image;
 use Intervention\Image\ImageManager;
@@ -68,8 +69,8 @@ class DashboardController extends Controller
             'title' => 'required|max:255',
             'description' => 'required',
             'nav_id' => 'required|max:255',
-            'header_img' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:10240',  // 10 MB
-            'main_img' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:10240',  // 10 MB
+            'header_img' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:10240',  // 10 MB
+            'main_img' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:10240',  // 10 MB
    // Add image validation
         ]);
     
@@ -158,13 +159,13 @@ class DashboardController extends Controller
             'title' => 'required|max:255',
             'description' => 'required',
             'category_id' => 'required|max:255',
-            'image_1' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:10240',  // Add image validation
-            'image_2' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:10240',  // Add image validation
-            'image_3' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:10240',  // Add image validation
-            'image_4' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:10240',  // Add image validation
+            'image_1' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:10240',  // Add image validation
+            'image_2' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:10240',  // Add image validation
+            'image_3' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:10240',  // Add image validation
+            'image_4' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:10240',  // Add image validation
             'description2' => 'required',
             'heading2' =>  'required',
-            'image_5' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:10240',  // Add image validation
+            'image_5' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:10240',  // Add image validation
 
 
 
@@ -432,5 +433,134 @@ class DashboardController extends Controller
     public function createblog() {
         return view('admin.blog');
     }
+    public function blogpage() {
+        $blogmodel = new Blog();
+        $blog = $blogmodel->select('id', 'title', 'main_img')
+            ->orderBy('id', 'DESC') // Assuming 'id' indicates the latest records
+            ->get();
+        return view('admin.blogpage',compact('blog'));
+    }
+    public function saveblog(Request $request){
+
+        // $uploadPath = '/home/onixuvjm/public_html/uploads/blog/';
+        // $temppath = '/home/onixuvjm/public_html/uploads/temporary/';
+         $uploadPath = 'uploads/blog/';
+        $temppath = 'uploads/temporary/';
+        $request->validate([
+            'title' =>'required|string|max:255',
+            'main_img' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:10240',  // 10 MB
+            'content' => 'required',
+        ]);
+        // print_r($request->content);exit();
+
+        $main_img = $request->file('main_img');
+
+        $main_img_name = time() . '2.' . $main_img->getClientOriginalExtension();
+
+        $main_img->move($temppath, $main_img_name);
+
+        $imgmanger = new ImageManager(new Driver());
     
+        $readimage2 = $imgmanger->read($temppath . $main_img_name);
+    
+        $size = min($readimage2->width(), $readimage2->height());
+        $readimage2->cover($size, $size)->save($uploadPath . $main_img_name);
+    
+        $imagePath2 = ($temppath . $main_img_name);
+
+        if (isset($imagePath2) && File::exists($imagePath2)) {
+            if (!File::delete($imagePath2)) {
+                \Log::error("Failed to delete temporary main image: " . $imagePath2);
+            }
+        }
+
+        $blog = new Blog();
+        $blog->title = $request->title;
+        $blog->main_img = asset('uploads/blog/' . $main_img_name);
+        $blog->content = $request->content;
+        $blog->save();
+
+
+        return redirect()->route('admin.blogpage')->with('success', 'Blog saved successfully!');
+ 
+    }
+
+    public function blogedit($id)
+    {
+        $blog = Blog::findOrFail($id);
+        return view('admin.blogedit', compact('blog'));
+    }
+    public function blogupdate(Request $request, $id)
+    {
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'main_img' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:10240',  // Accept webp and other formats
+            'content' => 'required',
+        ]);
+
+        $blog = Blog::findOrFail($id);
+        $blog->title = $request->title;
+        $blog->content = $request->content;
+
+        // Handle image upload if a new image is provided
+        if ($request->hasFile('main_img')) {
+            // Define upload paths
+            $uploadPath = '/home/onixuvjm/public_html/uploads/blog/';
+            $temppath = '/home/onixuvjm/public_html/uploads/temporary/';
+            
+            $main_img = $request->file('main_img');
+            $main_img_name = time() . '2.' . $main_img->getClientOriginalExtension();
+
+            // Move the image to temporary directory
+            $main_img->move($temppath, $main_img_name);
+
+            // Use the image manager to crop and save the image
+            $imgmanger = new ImageManager(new Driver());
+            $readimage2 = $imgmanger->read($temppath . $main_img_name);
+            $size = min($readimage2->width(), $readimage2->height());
+            $readimage2->cover($size, $size)->save($uploadPath . $main_img_name);
+
+            // Delete the temporary image
+            $imagePath2 = $temppath . $main_img_name;
+            if (File::exists($imagePath2)) {
+                File::delete($imagePath2);
+            }
+
+            $blog->main_img = asset('uploads/blog/' . $main_img_name);
+        }
+
+        // Save the updated blog post
+        $blog->save();
+
+        return redirect()->route('admin.blogpage')->with('success', 'Blog updated successfully!');
+    }
+
+    public function blogdestroy($id)
+    {
+        // Find the product by ID
+        $blog = Blog::find($id);
+        
+        if (!$blog) {
+            return redirect()->back()->withErrors('Product not found.'); // Handle case when product is not found
+        }
+
+        $baseUploadPath = '/home/onixuvjm/public_html';
+
+        $image1 = parse_url($blog->main_img, PHP_URL_PATH); // Get the path part of the URL
+        // $fullPath1 = public_path($image1);
+
+        
+        $fullPath1 = $baseUploadPath . $image1;
+
+
+        if ($fullPath1) {
+            File::delete($fullPath1);
+        }
+       
+        // Delete the product
+        $blog->delete();
+
+        // Redirect back with success message
+        return redirect()->back()->with('success', 'Blog deleted successfully.');
+    }
 }

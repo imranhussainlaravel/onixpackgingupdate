@@ -48,7 +48,6 @@ Route::get('/clear-all-caches', function () {
 //     Route::get('/sendemail', [EmailController::class, 'sendEmail'])->name('send.email');
 // });
 // // Route::group(['middleware' => 'admin.guest'], function() {
-//    xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 // });
 
 
@@ -61,6 +60,11 @@ Route::group(['prefix' => 'admin'],function(){
 
     Route::group(['middleware' => 'admin.auth'], function(){
         Route::get('dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+
+        Route::get('blog/create', [DashboardController::class, 'createblog'])->name('admin.blogcreate');
+        Route::get('blog', [DashboardController::class, 'blogpage'])->name('admin.blogpage');
+        Route::post('saveblog',[DashboardController::class, 'saveblog'])->name('save.blog');
+
         Route::get('logout', [LoginController::class, 'logout'])->name('admin.logout');
         Route::post('logout', [LoginController::class, 'logout'])->name('admin.logout');
         Route::get('category/create', [DashboardController::class, 'create_category'])->name('create.category');
@@ -74,12 +78,16 @@ Route::group(['prefix' => 'admin'],function(){
 
         Route::delete('/category/delete/{id}', [DashboardController::class, 'categorydestroy'])->name('category.destroy');
         Route::delete('/product/delete/{id}', [DashboardController::class, 'productdestroy'])->name('product.destroy');
+        Route::delete('/blog/delete/{id}', [DashboardController::class, 'blogdestroy'])->name('blog.destroy');
 
         Route::get('/category/edit/{id}', [DashboardController::class, 'editCategory'])->name('edit.category');
         Route::put('/category/update/{id}', [DashboardController::class, 'updateCategory'])->name('update.form');
 
         Route::get('/product/edit/{id}', [DashboardController::class, 'edit'])->name('edit.product');
         Route::put('/product/update/{id}', [DashboardController::class, 'update'])->name('update.product');
+
+        Route::get('/blog/{id}/edit', [DashboardController::class, 'blogedit'])->name('blog.edit');
+        Route::post('/blog/update/{id}', [DashboardController::class, 'blogupdate'])->name('blog.update');
 
     });
 
