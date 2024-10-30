@@ -381,14 +381,92 @@ class DashboardController extends Controller
     }
     public function updateCategory(Request $request, $id)
     {
-        $category = Categories::find($id);
-        $category->title = $request->title;
-        $category->description = $request->description;
-        $category->nav_id = $request->nav_id;
+        // Define paths
+    $uploadPath = '/home/onixuvjm/public_html/uploads/categories/';
+    $temppath = '/home/onixuvjm/public_html/uploads/temporary/';
+    // $uploadPath = 'uploads/categories/';
+    // $temppath = 'uploads/temporary/';
 
-        $category->save();
+    // Validate input
+    $validatedData = $request->validate([
+        'title' => 'required|max:255',
+        'description' => 'required',
+        'nav_id' => 'required|max:255',
+        'header_img' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:10240',
+        'main_img' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:10240',
+    ]);
 
-        return redirect()->route('admin.categoty')->with('success', 'Category updated successfully.');
+    // Find the category to update
+    $category = Categories::find($id);
+    $category->title = $validatedData['title'];
+    $category->description = $validatedData['description'];
+    $category->nav_id = $validatedData['nav_id'];
+
+    // Check if header image is uploaded
+    if ($request->hasFile('header_img')) {
+        // Delete old header image if it exists
+        if ($category->header_img && File::exists(public_path(parse_url($category->header_img, PHP_URL_PATH)))) {
+            File::delete(public_path(parse_url($category->header_img, PHP_URL_PATH)));
+        }
+
+        $header_img = $request->file('header_img');
+        $header_img_name = time() . '1.' . $header_img->getClientOriginalExtension();
+
+        // Move and process header image
+        $header_img->move($temppath, $header_img_name);
+        $imgmanager = new ImageManager(new Driver());
+        $readimage1 = $imgmanager->read($temppath . $header_img_name);
+
+        $originalWidth = $readimage1->width();
+        $originalHeight = $readimage1->height();
+
+        if (($originalWidth / $originalHeight) > (2 / 3)) {
+            $newHeight = $originalHeight;
+            $newWidth = intval($newHeight * (2 / 3));
+        } else {
+            $newWidth = $originalWidth;
+            $newHeight = intval($newWidth * (3 / 2));
+        }
+
+        $readimage1->cover($newWidth, $newHeight)->save($uploadPath . $header_img_name);
+
+
+        // Update category header image path
+        $category->header_img = asset('uploads/categories/' . $header_img_name);
+
+        // Delete temporary header image
+        File::delete($temppath . $header_img_name);
+    }
+
+    // Check if main image is uploaded
+    if ($request->hasFile('main_img')) {
+        // Delete old main image if it exists
+        if ($category->main_img && File::exists(public_path(parse_url($category->main_img, PHP_URL_PATH)))) {
+            File::delete(public_path(parse_url($category->main_img, PHP_URL_PATH)));
+        }
+
+        $main_img = $request->file('main_img');
+        $main_img_name = time() . '2.' . $main_img->getClientOriginalExtension();
+
+        // Move and process main image
+        $main_img->move($temppath, $main_img_name);
+        $imgmanager = new ImageManager(new Driver());
+        $readimage2 = $imgmanager->read($temppath . $main_img_name);
+        $size = min($readimage2->width(), $readimage2->height());
+        $readimage2->cover($size, $size)->save($uploadPath . $main_img_name);
+
+        // Update category main image path
+        $category->main_img = asset('uploads/categories/' . $main_img_name);
+
+        // Delete temporary main image
+        File::delete($temppath . $main_img_name);
+    }
+
+    // Save the updated category
+    $category->save();
+
+    // Redirect with success message
+    return redirect()->route('admin.categoty')->with('success', 'Category updated successfully.');
     }
     public function edit($id)
     {

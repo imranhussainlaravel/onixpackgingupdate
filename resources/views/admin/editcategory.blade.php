@@ -92,18 +92,19 @@
                 </select>
             </div>
 
-            <!-- Images Section (disabled in edit) -->
-            {{-- <div class="form-group">
-                <label for="header_img">Header Image</label>
-                <img id="header_img_preview" src="{{ $category->header_img }}" alt="Header Image" class="img-preview" style="width: 100%; height: auto;">
-                <input type="file" id="header_img" name="header_img" accept="image/*" disabled>
+            <!-- Images Section -->
+            <div class="form-group">
+                <label for="header_img">Header Image (chose only in case of update)</label>
+                {{-- <img id="header_img_preview" src="{{ $category->header_img }}" alt="Header Image" class="img-preview" style="width: 100%; height: auto;"> --}}
+                <input type="file" id="header_img" name="header_img" accept="image/*">
             </div>
 
             <div class="form-group">
-                <label for="main_img">Main Image</label>
-                <img id="main_img_preview" src="{{ $category->main_img }}" alt="Main Image" class="img-preview" style="width: 100%; height: auto;">
-                <input type="file" id="main_img" name="main_img" accept="image/*" disabled>
-            </div> --}}
+                <label for="main_img">Main Image (chose only in case of update)</label>
+                {{-- <img id="main_img_preview" src="{{ $category->main_img }}" alt="Main Image" class="img-preview" style="width: 100%; height: auto;"> --}}
+                <input type="file" id="main_img" name="main_img" accept="image/*">
+            </div>
+
 
             <!-- Submit Button -->
             <div class="form-group">
