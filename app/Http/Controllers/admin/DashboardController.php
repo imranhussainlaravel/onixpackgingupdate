@@ -485,6 +485,11 @@ class DashboardController extends Controller
     
     public function update(Request $request, $id)
     {
+        // $uploadPath = '/home/onixuvjm/public_html/uploads/products/';
+        // $temppath = '/home/onixuvjm/public_html/uploads/temporary/';
+        $uploadPath = 'uploads/products/';
+        $temppath = 'uploads/temporary/';
+
         $product = Product::findOrFail($id);
     
         // Validate the input data
@@ -492,7 +497,11 @@ class DashboardController extends Controller
             'title' => 'required|string|max:255',
             'description' => 'required|string',
             'category_id' => 'required|exists:categories,id',
-            // Add validation for images if required
+            'image_1' => 'image|nullable',
+            'image_2' => 'image|nullable',
+            'image_3' => 'image|nullable',
+            'image_4' => 'image|nullable',
+            'image_5' => 'image|nullable',
         ]);
     
         // Update product data
@@ -502,19 +511,45 @@ class DashboardController extends Controller
         $product->heading2 = $request->input('heading2');
         $product->description2 = $request->input('description2');
     
-        // Handle image uploads (optional: if images are not being updated, you can skip this)
-        // for ($i = 1; $i <= 5; $i++) {
-        //     if ($request->hasFile('image_' . $i)) {
-        //         // Assuming images are saved in 'public/images/products'
-        //         $path = $request->file('image_' . $i)->store('products', 'public');
-        //         $product->{'image_' . $i} = $path; // Update the image path in the product
-        //     }
-        // }
+        // Handle image uploads
+        for ($i = 1; $i <= 5; $i++) {
+            if ($request->hasFile('image_' . $i)) {
+                // Check if old image exists and delete it
+                $oldImage = $product->{'image_' . $i};
+                if ($oldImage && File::exists(public_path(parse_url($oldImage, PHP_URL_PATH)))) {
+                    File::delete(public_path(parse_url($oldImage, PHP_URL_PATH)));
+                }
+
+                
+                // Handle new image upload
+                $image1 = $request->file('image_' . $i);
+                // **Corrected file name creation**
+                $imagename1 = time() . '_' . $i . '.' . $image1->getClientOriginalExtension(); // Added underscore
+    
+                $image1->move($temppath, $imagename1);
+    
+                $imgmanger = new ImageManager(new Driver());
+                $readimage1 = $imgmanger->read($temppath . $imagename1);
+    
+                $size = min($readimage1->width(), $readimage1->height()); // Get width and height
+                $readimage1->cover($size, $size)->save($uploadPath . $imagename1);
+    
+                // **Cleanup temporary image immediately after saving**
+                $imagePath1 = ($temppath . $imagename1);
+                if (File::exists($imagePath1)) {
+                    File::delete($imagePath1); // Ensure temporary image is deleted
+                }
+    
+                // **Corrected assignment to product image**
+                $product->{'image_' . $i} = $imagename1 ? asset('uploads/products/' . $imagename1) : null; // Saving relative path
+            }
+        }
     
         $product->save(); // Save updated product to the database
     
         return redirect()->route('admin.product')->with('success', 'Product updated successfully!');
     }
+    
     public function createblog() {
         return view('admin.blog');
     }

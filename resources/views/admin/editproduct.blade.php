@@ -90,15 +90,12 @@
             </div>
 
             <!-- Image Uploads -->
-            {{-- @for ($i = 1; $i <= 4; $i++)
+            @for ($i = 1; $i <= 4; $i++)
             <div class="form-group">
-                <label for="image_{{ $i }}">Image {{ $i }} (1:1 Ratio)</label>
+                <label for="image_{{ $i }}">Image {{ $i }} (1:1 Ratio) "use in case of image update"</label>
                 <input type="file" id="image_{{ $i }}" name="image_{{ $i }}" accept="image/*">
-                @if ($product->{'image_'.$i})
-                    <p>Current Image: <img src="{{ asset('images/products/'.$product->{'image_'.$i}) }}" style="width: 100px; height: auto;"></p>
-                @endif
             </div>
-            @endfor --}}
+            @endfor
 
             <!-- Heading Description -->
             <div class="form-group">
@@ -113,13 +110,11 @@
             </div>
 
             <!-- Image 5 -->
-            {{-- <div class="form-group">
-                <label for="image_5">Image 5 (1:1 Ratio) png(desc)</label>
+            <div class="form-group">
+                <label for="image_5">Image 5 (1:1 Ratio) png(desc) "use in case of image update"</label>
                 <input type="file" id="image_5" name="image_5" accept="image/*">
-                @if ($product->image_5)
-                    <p>Current Image: <img src="{{ asset('images/products/'.$product->image_5) }}" style="width: 100px; height: auto;"></p>
-                @endif
-            </div> --}}
+                
+            </div>
 
             <!-- Submit Button -->
             <div class="form-group">
