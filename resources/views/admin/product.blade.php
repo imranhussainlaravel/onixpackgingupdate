@@ -72,7 +72,7 @@
                                     <td>{{$product->id}}</td>
                                     <td>{{$product->title}}</td>
                                     <td>{{$product->category_name}}</td>
-                                    <td>{!! $product->category_name !!}</td> <!-- Use {!! !!} to render HTML -->
+                                    <td>{!! $product->category_name !!}</td>
                                     <td>
                                         <form action="{{ route('product.toggle-status', $product->id) }}" method="POST">
                                             @csrf
