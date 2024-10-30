@@ -359,6 +359,31 @@ ul.list-unstyled li {
 }
 
 
+/* Basic reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Main container for the blog content */
+.blog-container {
+    max-width: 1200px; /* Adjust as needed */
+    margin: 0 auto;
+    padding: 80px; /* Minimal spacing on the sides */
+}
+
+.blog-content {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+
 
 
 
