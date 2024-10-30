@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Categories;
+use App\Models\Blog;
 use App\Models\Product;
 
 
@@ -55,5 +56,24 @@ class CategoryController extends Controller
     }
     public function thankyou() {
         return view('thanku');
+    }
+    public function blogblog(){
+        $blog = blog::select('id', 'title' , 'main_img')->get();
+
+        return view('blog', compact('blog'));
+    }
+    
+    
+    public function blogblogdetails($id){
+
+        // $id = $request['id'];
+        $blogModel = new blog();
+        $blog = $blogModel->where('id',$id)->first();
+
+        if (!$blog) {
+            return redirect()->back()->withErrors('Blog not found.');
+        }
+
+        return view('blogdetails', compact('blog'));
     }
 }

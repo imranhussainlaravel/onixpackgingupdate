@@ -329,7 +329,7 @@
                     </li>
                     
                     <li class="nav-item">
-                        <a class="nav-link" href="#" style="color: white; font-weight:bold;">Portfolio</a>
+                        <a class="nav-link" href="{{ route('blog.blog') }}" style="color: white; font-weight:bold;">Blog</a>
                     </li>
                 </ul>
                

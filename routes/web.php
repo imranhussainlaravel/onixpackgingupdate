@@ -24,6 +24,8 @@ Route::group([], function() {
     Route::post('/sendemail', [EmailController::class, 'sendEmail'])->name('send.email');
     Route::get('/about-team',[CategoryController::class, 'team'])->name('about.team');
     Route::get('/thankyou',[CategoryController::class, 'thankyou'])->name('thank.you');
+    Route::get('/blog',[CategoryController::class, 'blogblog'])->name('blog.blog');
+    Route::get('/blog/details/{id}',[CategoryController::class, 'blogblogdetails'])->name('blog.details');
 });
 Route::get('/clear-all-caches', function () {
     Artisan::call('cache:clear');
