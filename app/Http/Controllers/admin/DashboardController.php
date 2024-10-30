@@ -47,7 +47,16 @@ class DashboardController extends Controller
             ->get();
         foreach ($products as $key => $pro){
             $category = $categorymodel->select('title')->where('id', $pro->category_id)->first();
-            $products[$key]->category_name = $category->title;
+
+            if ($category) {
+                // Assign category title if found
+                $products[$key]->category_name = $category->title;
+            } else {
+                // Set category name to 'Category Deleted' if not found
+                $products[$key]->category_name = '<span style="color: red;">Category Deleted</span>'; // Use HTML for styling
+                // Optionally, log the missing category for debugging
+                \Log::warning('Category not found for category_id: ' . $pro->category_id);
+            }
         }
         return view('admin.product', compact('products'));
 
