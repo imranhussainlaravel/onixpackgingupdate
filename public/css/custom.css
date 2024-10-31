@@ -147,13 +147,10 @@
     border-radius: 10px;
 }
 #rowofp {
-    /* background-color: #f9b28c; */
-    background-color: #f88f20dd;
+    background: linear-gradient(to right, #f88f20dd 70%, rgba(248, 143, 32, 0) 100%); /* Adjust transparency as needed */
     border-radius: 40px 0px 0px 40px;
-    mask-image: linear-gradient(to right, black 70%, transparent 100%);
-    -webkit-mask-image: linear-gradient(to right, black 70%, transparent 100%);
-
 }
+
 .no-mask {
     mask-image: none;
     -webkit-mask-image: none;
