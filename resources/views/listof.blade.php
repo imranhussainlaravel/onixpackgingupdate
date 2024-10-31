@@ -40,7 +40,7 @@
                                 <img src="{{ $product['image_1'] }}" class="card-img-top mb-3" alt="Magnetic Closure Boxes" style="max-height: 200px; object-fit: cover;">
                                 <div class="card-body">
                                     <h5 class="card-title text-dark fw-bold mb-3">{{ $product['title'] }}</h5>
-                                    <p class="text-primary fw-bold">Learn More <span>&#8250;</span></p>
+                                    {{-- <p class="text-primary fw-bold">Learn More <span>&#8250;</span></p> --}}
                                 </div>
                             </div>
                         </a>

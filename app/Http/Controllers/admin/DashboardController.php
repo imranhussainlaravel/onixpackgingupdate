@@ -74,7 +74,7 @@ class DashboardController extends Controller
     public function form(Request $request) {
         $uploadPath = '/home/onixuvjm/public_html/uploads/categories/';
         $temppath = '/home/onixuvjm/public_html/uploads/temporary/';
-        //         $uploadPath = 'uploads/products/';
+        // $uploadPath = 'uploads/categories/';
         // $temppath = 'uploads/temporary/';
         $validatedData = $request->validate([
             'title' => 'required|max:255',
