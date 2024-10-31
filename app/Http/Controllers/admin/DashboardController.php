@@ -74,6 +74,8 @@ class DashboardController extends Controller
     public function form(Request $request) {
         $uploadPath = '/home/onixuvjm/public_html/uploads/categories/';
         $temppath = '/home/onixuvjm/public_html/uploads/temporary/';
+        //         $uploadPath = 'uploads/products/';
+        // $temppath = 'uploads/temporary/';
         $validatedData = $request->validate([
             'title' => 'required|max:255',
             'description' => 'required',
@@ -485,10 +487,10 @@ class DashboardController extends Controller
     
     public function update(Request $request, $id)
     {
-        // $uploadPath = '/home/onixuvjm/public_html/uploads/products/';
-        // $temppath = '/home/onixuvjm/public_html/uploads/temporary/';
-        $uploadPath = 'uploads/products/';
-        $temppath = 'uploads/temporary/';
+        $uploadPath = '/home/onixuvjm/public_html/uploads/products/';
+        $temppath = '/home/onixuvjm/public_html/uploads/temporary/';
+        // $uploadPath = 'uploads/products/';
+        // $temppath = 'uploads/temporary/';
 
         $product = Product::findOrFail($id);
     
