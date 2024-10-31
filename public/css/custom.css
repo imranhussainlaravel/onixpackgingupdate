@@ -57,6 +57,14 @@
     justify-content: space-between; /* Distributes space evenly */
     transition: transform 0.3s ease; /* Smooth transition effect */
 }
+.card1 {
+    height: 350px; /* Set a fixed height for all cards */
+    border-radius: 12px; /* Rounded corners */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Distributes space evenly */
+    transition: transform 0.3s ease; /* Smooth transition effect */
+}
 .container-fluid {
     /* background: linear-gradient(90deg, #083358, #0b446b); */
     /* background: linear-gradient(90deg, #f9a171, #FFFFFF); */

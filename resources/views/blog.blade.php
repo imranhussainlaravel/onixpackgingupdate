@@ -15,7 +15,7 @@
                     <!-- Blog Box -->
                     <div class="col-6 col-md-6 col-lg-3 mb-4">
                         <a href="{{ route('blog.details', ['id' => $blogitem->id]) }}" class="text-decoration-none">
-                            <div class="card shadow-sm p-3 rounded-3 border-0 text-center" style="background-color: #f8fafc; cursor: pointer;">
+                            <div class="card1 shadow-sm p-3 rounded-3 border-0 text-center" style="background-color: #f8fafc; cursor: pointer;">
                                 <img src="{{ $blogitem->main_img }}" class="card-img-top mb-3" alt="{{ $blogitem->title }}" style="max-height: 200px; object-fit: cover;">
                                 <div class="card-body">
                                     <h5 class="card-title text-dark fw-bold mb-3">{{ $blogitem->title }}</h5>
