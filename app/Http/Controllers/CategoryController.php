@@ -45,8 +45,10 @@ class CategoryController extends Controller
     public function final($id){
 
         // $id = $request['id'];
-        $productModel = new Product();
-        $products = $productModel->where('id',$id)->first();
+        $slugTitle = Str::slug($id); // Generate slug version of title
+        $products = Product::whereRaw("REPLACE(title, ' ', '-') = ?", [$slugTitle])->first();
+        // $productModel = new Product();
+        // $products = $productModel->where('id',$id)->first();
 
         if (!$products) {
             return redirect()->back()->withErrors('Category not found.');

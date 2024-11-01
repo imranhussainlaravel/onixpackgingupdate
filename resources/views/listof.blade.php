@@ -35,7 +35,8 @@
                 <!-- Box 1 -->
                     <div class="col-6 col-md-6 col-lg-3 mb-4">
                         <!-- Wrap the whole card in an anchor tag -->
-                        <a href="{{ route('product.final', ['id' => $product['id']]) }}" class="text-decoration-none">
+                        {{-- <a href="{{ route('product.final', ['id' => $product['id']]) }}" class="text-decoration-none"> --}}
+                        <a href="{{ route('product.final', ['id' => Str::slug($product['title'])]) }}" class="text-decoration-none">
                             <div class="card shadow-sm p-3 rounded-3 border-0 text-center" style="background-color: #f8fafc; cursor: pointer;">
                                 <img src="{{ $product['image_1'] }}" class="card-img-top mb-3" alt="Magnetic Closure Boxes" style="max-height: 200px; object-fit: cover;">
                                 <div class="card-body">
