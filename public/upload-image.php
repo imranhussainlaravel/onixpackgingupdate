@@ -9,7 +9,9 @@ $uploadUrl = 'https://onixpackaging.com/uploads/blog/';  // Base URL to access t
 if ($_FILES['file']['error'] === UPLOAD_ERR_OK) {
     $tempPath = $_FILES['file']['tmp_name'];
     // $fileName = basename($_FILES['file']['name']);
-    $fileName = time() . '1.' . $header_img->getClientOriginalExtension();
+    // $fileName = time() . '1.' . $_FILES['file']->getClientOriginalExtension();
+    $fileName = time() . '1.' . pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
+
 
     $targetPath = $uploadDir . $fileName;
 

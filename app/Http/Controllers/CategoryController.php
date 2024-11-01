@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use App\Models\Categories;
 use App\Models\Blog;
 use App\Models\Product;
@@ -19,10 +20,12 @@ class CategoryController extends Controller
     }
     public function show($id)
     {
-        // $id = $request['id'];
-        // print_r($id);exit();
-        $categoryModel = new Categories();
-        $category = $categoryModel->find($id);
+        // $categoryModel = new Categories();
+        // // $category = $categoryModel->find($id);
+        // $category = $categoryModel->where('title', $id)->first();
+
+        $slugTitle = Str::slug($id); // Generate slug version of title
+        $category = Categories::whereRaw("REPLACE(title, ' ', '-') = ?", [$slugTitle])->first();
 
 
         if (!$category) {
@@ -31,7 +34,7 @@ class CategoryController extends Controller
 
         $productModel = new Product();
         $products = $productModel->select('id','title','image_1') // Select specific columns
-        ->where('category_id', $id)->where('status', 'active') 
+        ->where('category_id', $category->id)->where('status', 'active') 
         ->get()                    // Retrieve the results
         ->toArray();   
         // echo $products->toSql();
