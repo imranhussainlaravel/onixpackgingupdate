@@ -257,6 +257,13 @@
 
 </div>
 
+<div class="blog-container">
+    <div class="blog-content">
+        <!-- Dynamic content from the database goes here -->
+        {!! $products->content !!}
+    </div>
+</div>
+
 <script>
     // JavaScript function to change the main image when a thumbnail is clicked
     function changeMainImage(thumbnail) {
