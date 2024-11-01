@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel</title>
     <link rel="icon" type="image/x-icon" href="{{ URL('images/logo.png') }}">
+    <script src="https://cdn.tiny.cloud/1/vxj76g8udnthdjtd21bsp83sa3kf9qku12j6vv454sn9ihgm/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -56,72 +58,111 @@
         .form-group button:hover {
             background-color: #45a049;
         }
+        .editor-container {
+    width: 100%; /* Adjusts width to take the full form container */
+    margin: 20px auto;
+}
+
+#editor {
+    width: 100%;
+    min-height: 300px; /* Sets minimum height */
+    box-sizing: border-box; /* Ensures padding doesn't affect width */
+}
     </style>
+      <script>
+        tinymce.init({
+        selector: '#editor',
+        plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist casechange formatpainter advtable',
+        toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table checklist | spellcheckdialog a11ycheck typography | align lineheight',
+        height: "100%",
+        image_title: true,
+        automatic_uploads: true,
+        file_picker_types: 'image',
+        // images_upload_url: '/uploads/blog',
+        images_upload_url: '/upload-image.php', 
+        setup: function (editor) {
+            editor.on('change', function () {
+                editor.save();
+            });
+        }
+    });
+
+    </script>
 </head>
 
 <body>
 
-    <div class="form-container">
-        <h2>Edit Product</h2>
-        <form action="{{ route('update.product', $product->id) }}" method="POST" enctype="multipart/form-data">
-            @csrf
-            @method('PUT') <!-- This is important for PUT requests -->
+    <form action="{{ route('update.product', $product->id) }}" method="POST" enctype="multipart/form-data">
+        <div class="form-container">
+            <h2>Edit Product</h2>
+                @csrf
+                @method('PUT') <!-- This is important for PUT requests -->
 
-            <!-- Title -->
-            <div class="form-group">
-                <label for="title">Title</label>
-                <input type="text" id="title" name="title" value="{{ $product->title }}" required>
-            </div>
+                <!-- Title -->
+                <div class="form-group">
+                    <label for="title">Title</label>
+                    <input type="text" id="title" name="title" value="{{ $product->title }}" required>
+                </div>
 
-            <!-- Description -->
-            <div class="form-group">
-                <label for="description">Description</label>
-                <textarea id="description" name="description" required>{{ $product->description }}</textarea>
-            </div>
+                <!-- Description -->
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea id="description" name="description" required>{{ $product->description }}</textarea>
+                </div>
 
-            <!-- Nav ID (Dropdown) -->
-            <div class="form-group">
-                <label for="category_id">Category</label>
-                <select id="category_id" name="category_id" required>
-                    @foreach ($categories as $category)
-                        <option value="{{$category->id}}" {{ $category->id == $product->category_id ? 'selected' : '' }}>{{$category->title}}</option>
-                    @endforeach
-                </select>
-            </div>
+                <!-- Nav ID (Dropdown) -->
+                <div class="form-group">
+                    <label for="category_id">Category</label>
+                    <select id="category_id" name="category_id" required>
+                        @foreach ($categories as $category)
+                            <option value="{{$category->id}}" {{ $category->id == $product->category_id ? 'selected' : '' }}>{{$category->title}}</option>
+                        @endforeach
+                    </select>
+                </div>
 
-            <!-- Image Uploads -->
-            @for ($i = 1; $i <= 4; $i++)
-            <div class="form-group">
-                <label for="image_{{ $i }}">Image {{ $i }} (1:1 Ratio) "use in case of image update"</label>
-                <input type="file" id="image_{{ $i }}" name="image_{{ $i }}" accept="image/*">
-            </div>
-            @endfor
+                <!-- Image Uploads -->
+                @for ($i = 1; $i <= 4; $i++)
+                <div class="form-group">
+                    <label for="image_{{ $i }}">Image {{ $i }} (1:1 Ratio) "use in case of image update"</label>
+                    <input type="file" id="image_{{ $i }}" name="image_{{ $i }}" accept="image/*">
+                </div>
+                @endfor
 
-            <!-- Heading Description -->
-            <div class="form-group">
-                <label for="heading2">Heading Description</label>
-                <input type="text" id="heading2" name="heading2" value="{{ $product->heading2 }}" required>
-            </div>
+                <!-- Heading Description -->
+                <div class="form-group">
+                    <label for="heading2">Heading Description</label>
+                    <input type="text" id="heading2" name="heading2" value="{{ $product->heading2 }}" required>
+                </div>
 
-            <!-- Second Description -->
-            <div class="form-group">
-                <label for="description2">2nd Description</label>
-                <textarea id="description2" name="description2" required>{{ $product->description2 }}</textarea>
-            </div>
+                <!-- Second Description -->
+                <div class="form-group">
+                    <label for="description2">2nd Description</label>
+                    <textarea id="description2" name="description2" required>{{ $product->description2 }}</textarea>
+                </div>
 
-            <!-- Image 5 -->
-            <div class="form-group">
-                <label for="image_5">Image 5 (1:1 Ratio) png(desc) "use in case of image update"</label>
-                <input type="file" id="image_5" name="image_5" accept="image/*">
-                
-            </div>
+                <!-- Image 5 -->
+                <div class="form-group">
+                    <label for="image_5">Image 5 (1:1 Ratio) png(desc) "use in case of image update"</label>
+                    <input type="file" id="image_5" name="image_5" accept="image/*">
+                    
+                </div>
 
-            <!-- Submit Button -->
+                <!-- Submit Button -->
+                <div class="form-group">
+                </div>
+        </div>
+        <label for="content">3rd description (for long description)</label>
+        <div class="editor-container">
+            <textarea id="editor" name="content">{{ $product->content }}</textarea>
+        </div>
+
+        <div class="form-container" style="text-align: center;">
             <div class="form-group">
                 <button type="submit">Update Product</button>
             </div>
-        </form>
-    </div>
+        </div>
+    </form>
+
 
 </body>
 

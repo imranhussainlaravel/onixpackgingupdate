@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel</title>
+    <script src="https://cdn.tiny.cloud/1/vxj76g8udnthdjtd21bsp83sa3kf9qku12j6vv454sn9ihgm/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
     <link rel="icon" type="image/x-icon" href="{{ URL('images/logo.png') }}">
     <style>
         body {
@@ -21,6 +22,19 @@
             width: 500px;
             margin: 0 auto;
         }
+
+
+.editor-container {
+    width: 100%; /* Adjusts width to take the full form container */
+    margin: 20px auto;
+}
+
+#editor {
+    width: 100%;
+    min-height: 300px; /* Sets minimum height */
+    box-sizing: border-box; /* Ensures padding doesn't affect width */
+}
+
 
         .form-group {
             margin-bottom: 20px;
@@ -88,6 +102,25 @@
             background-color: #45a049;
         }
     </style>
+    <script>
+        tinymce.init({
+        selector: '#editor',
+        plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist casechange formatpainter advtable',
+        toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table checklist | spellcheckdialog a11ycheck typography | align lineheight',
+        height: "100%",
+        image_title: true,
+        automatic_uploads: true,
+        file_picker_types: 'image',
+        // images_upload_url: '/uploads/blog',
+        images_upload_url: '/upload-image.php', 
+        setup: function (editor) {
+            editor.on('change', function () {
+                editor.save();
+            });
+        }
+    });
+
+    </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.15/cropper.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.15/cropper.min.js"></script>
 
@@ -95,10 +128,10 @@
 
 <body>
 
+    <form action="{{ route('save.product') }}" method="POST" enctype="multipart/form-data">
+    @csrf
     <div class="form-container">
         <h2>Save Prodcut</h2>
-        <form action="{{ route('save.product') }}" method="POST" enctype="multipart/form-data">
-            @csrf
             <!-- Title -->
             <div class="form-group">
                 <label for="title">Title</label>
@@ -201,13 +234,22 @@
             </div>
 
 
-
-            <!-- Submit Button -->
-            <div class="form-group">
-                <button type="submit">Save Product</button>
-            </div>
-        </form>
     </div>
+    <label for="content">3rd description (for long description)</label>
+    <div class="editor-container">
+        <textarea id="editor" name="content"></textarea>
+    </div>
+
+
+    <!-- Submit Button -->
+    <div class="form-container" style="text-align: center;">
+        <div class="form-group">
+            <button type="submit">Save Product</button>
+        </div>
+    </div>
+
+    </form>
+
 
     <script>
         let headerCropper;

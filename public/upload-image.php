@@ -1,9 +1,9 @@
 <?php
 
-// $uploadDir = '/home/onixuvjm/public_html/uploads/blog/';
-$uploadDir = 'uploads/blog/';
-// $uploadUrl = 'https://onixpackaging.com/uploads/blog/';  // Base URL to access the images
-$uploadUrl = 'http://127.0.0.1:8000/uploads/blog/';  // Base URL to access the images
+$uploadDir = '/home/onixuvjm/public_html/uploads/blog/';
+// $uploadDir = 'uploads/blog/';
+$uploadUrl = 'https://onixpackaging.com/uploads/blog/';  // Base URL to access the images
+// $uploadUrl = 'http://127.0.0.1:8000/uploads/blog/';  // Base URL to access the images
 
 
 if ($_FILES['file']['error'] === UPLOAD_ERR_OK) {

@@ -176,8 +176,7 @@ class DashboardController extends Controller
             'description2' => 'required',
             'heading2' =>  'required',
             'image_5' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:10240',  // Add image validation
-
-
+            'content' => 'required',
 
         ]);
     
@@ -278,6 +277,7 @@ class DashboardController extends Controller
         $product->image_5 = $imagename5 ? asset('uploads/products/' . $imagename5) : null;
         $product->description2 = $request['description2'];
         $product->heading2 = $request['heading2'];
+        $product->content = $request['content'];
         $product->save();
     
         // return redirect()->back()->with('success', 'Product saved successfully!');admin.dashboard
@@ -504,6 +504,7 @@ class DashboardController extends Controller
             'image_3' => 'image|nullable',
             'image_4' => 'image|nullable',
             'image_5' => 'image|nullable',
+            'content' => 'required',
         ]);
     
         // Update product data
@@ -512,6 +513,7 @@ class DashboardController extends Controller
         $product->category_id = $validatedData['category_id'];
         $product->heading2 = $request->input('heading2');
         $product->description2 = $request->input('description2');
+        $product->content = $request->content;
     
         // Handle image uploads
         for ($i = 1; $i <= 5; $i++) {

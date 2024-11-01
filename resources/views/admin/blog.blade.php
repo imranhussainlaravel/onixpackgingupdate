@@ -23,8 +23,8 @@
         image_title: true,
         automatic_uploads: true,
         file_picker_types: 'image',
-        images_upload_url: '/uploads/blog',
-        // images_upload_url: '/upload-image.php', 
+        // images_upload_url: '/uploads/blog',
+        images_upload_url: '/upload-image.php', 
         setup: function (editor) {
             editor.on('change', function () {
                 editor.save();
