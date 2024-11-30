@@ -18,11 +18,11 @@ use App\Http\kernel;
 // Route::get('/sendemail', [EmailController::class, 'sendEmail'])->name('send.email');
 
 Route::group([], function() {
-    Route::get('/', [CategoryController::class, 'index'])->name('index.home');
+    Route::get('/', [CategoryController::class, 'team'])->name('index.team');
     Route::get('/products/{id}', [CategoryController::class, 'show'])->name('product.show');
     Route::get('/list/product/{id}', [CategoryController::class, 'final'])->name('product.final');
     Route::post('/sendemail', [EmailController::class, 'sendEmail'])->name('send.email');
-    Route::get('/about-team',[CategoryController::class, 'team'])->name('about.team');
+    Route::get('/index',[CategoryController::class, 'index'])->name('about.home');
     Route::get('/thankyou',[CategoryController::class, 'thankyou'])->name('thank.you');
     Route::get('/blog',[CategoryController::class, 'blogblog'])->name('blog.blog');
     Route::get('/blog/details/{id}',[CategoryController::class, 'blogblogdetails'])->name('blog.details');

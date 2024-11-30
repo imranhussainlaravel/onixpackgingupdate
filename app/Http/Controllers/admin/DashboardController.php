@@ -72,17 +72,38 @@ class DashboardController extends Controller
 
     }
     public function form(Request $request) {
-        $uploadPath = '/home/onixuvjm/public_html/uploads/categories/';
-        $temppath = '/home/onixuvjm/public_html/uploads/temporary/';
-        // $uploadPath = 'uploads/categories/';
-        // $temppath = 'uploads/temporary/';
+        // $uploadPath = '/home/onixuvjm/public_html/uploads/categories/';
+        // $temppath = '/home/onixuvjm/public_html/uploads/temporary/';
+        $uploadPath = 'uploads/categories/';
+        $temppath = 'uploads/temporary/';
         $validatedData = $request->validate([
             'title' => 'required|max:255',
             'description' => 'required',
             'nav_id' => 'required|max:255',
             'header_img' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:10240',  // 10 MB
             'main_img' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:10240',  // 10 MB
+            'icon' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:10240',  // 10 MB
         ]);
+
+
+        if ($request->hasFile('icon')) {
+
+            $icon_img = $request->file('icon');
+            $icon_img_name = time() . '3.' . $icon_img->getClientOriginalExtension();
+            $icon_img->move($temppath, $icon_img_name);
+            $imgmanager = new ImageManager(new Driver());
+            $readimage3 = $imgmanager->read($temppath . $icon_img_name);
+            $size3 = min($readimage3->width(), $readimage3->height());
+            $readimage3->cover($size3, $size3)->save($uploadPath . $icon_img_name);
+
+            $imagePath3 = ($temppath . $icon_img_name);
+
+            if (isset($imagePath3) && File::exists($imagePath3)) {
+                if (!File::delete($imagePath3)) {
+                    \Log::error("Failed to delete temporary header image: " . $imagePath3);
+                }
+            }
+        }
     
         $header_img = $request->file('header_img');
         $main_img = $request->file('main_img');
@@ -97,6 +118,7 @@ class DashboardController extends Controller
     
         // Create an ImageManager instance
         $imgmanger = new ImageManager(new Driver());
+
     
         // Read the images from the temporary directory
         $readimage1 = $imgmanger->read($temppath . $header_img_name);
@@ -154,6 +176,7 @@ class DashboardController extends Controller
         $category->nav_id = $validatedData['nav_id'];
         $category->header_img = asset('uploads/categories/' . $header_img_name);
         $category->main_img = asset('uploads/categories/' . $main_img_name);
+        $category->icon = asset('uploads/categories/' . $icon_img_name);
         $category->save();
     
         // Redirect with success message
