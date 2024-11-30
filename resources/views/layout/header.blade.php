@@ -261,9 +261,9 @@
                             
                             <!-- Grid Layout for Dropdown Items -->
                             @foreach($nav1 as $item1)
-                                <a href="{{ route('product.show', ['id' => $item1->id]) }}" class="dropdown-item p-2 d-flex align-items-start">
+                                <a href="{{ route('product.show', ['id' => Str::slug($item1->title)]) }}" class="dropdown-item p-2 d-flex align-items-start">
                                     <div class="mr-3 wrap-icon">
-                                        <img src="{{ URL('images/logo.png') }}" alt="{{ $item1->title }}" style="width: 30px; height: 30px;">
+                                        <img src="{{$item1->icon}}" alt="{{ $item1->title }}" style="width: 30px; height: 30px;">
                                     </div>
                                     <div>
                                         <h3>{{ $item1->title }}</h3>
@@ -284,7 +284,7 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             @foreach($nav2 as $item2)
-                                <li><a class="dropdown-item" href="{{ route('product.show', ['id' => $item2->id]) }}">{{ $item2->title }}</a></li>
+                                <li><a class="dropdown-item" href="{{ route('product.show', ['id' => Str::slug($item2->title)]) }}">{{ $item2->title }}</a></li>
                             @endforeach
                         </ul>
                     </li>
@@ -295,7 +295,7 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             @foreach($nav3 as $item3)
-                                <li><a class="dropdown-item" href="{{ route('product.show', ['id' => $item3->id]) }}">{{ $item3->title }}</a></li>
+                                <li><a class="dropdown-item" href="{{ route('product.show', ['id' => Str::slug($item3->title)]) }}">{{ $item3->title }}</a></li>
                             @endforeach
                         </ul>
                     </li>
