@@ -65,10 +65,24 @@ class DashboardController extends Controller
     public function create_product()
     {
         $categoriesmodel = new Categories();
-        $categories = $categoriesmodel->select('id', 'title')
+        $categories = $categoriesmodel->select('id', 'title','nav_id')
             ->orderBy('id', 'DESC') // Assuming 'id' indicates the latest records
             ->get();
-        return view('admin.createp', compact('categories'));
+            $nav1 = [];
+            $nav2 = [];
+            $nav3 = [];
+        foreach($categories as $category){
+            if($category->nav_id == '1'){
+                $nav1[] = $category;
+            }
+            if($category->nav_id == '2'){
+                $nav2[] = $category;
+            }
+            if($category->nav_id == '3'){
+                $nav3[] = $category;
+            }
+        }
+        return view('admin.createp', compact('nav1', 'nav2', 'nav3'));
 
     }
     public function form(Request $request) {
@@ -103,6 +117,8 @@ class DashboardController extends Controller
                     \Log::error("Failed to delete temporary header image: " . $imagePath3);
                 }
             }
+        } else {
+            $icon_img_name = "";
         }
     
         $header_img = $request->file('header_img');
@@ -184,14 +200,16 @@ class DashboardController extends Controller
     }
     
     public function productform(Request $request) {
-        $uploadPath = '/home/onixuvjm/public_html/uploads/products/';
-        $temppath = '/home/onixuvjm/public_html/uploads/temporary/';
-        // $uploadPath = 'uploads/products/';
-        // $temppath = 'uploads/temporary/';
+        // $uploadPath = '/home/onixuvjm/public_html/uploads/products/';
+        // $temppath = '/home/onixuvjm/public_html/uploads/temporary/';
+        $uploadPath = 'uploads/products/';
+        $temppath = 'uploads/temporary/';
         $request->validate([
             'title' => 'required|max:255',
             'description' => 'required',
-            'category_id' => 'required|max:255',
+            'category_id1' => 'nullable|max:255',
+            'category_id2' => 'nullable|max:255',
+            'category_id3' => 'nullable|max:255',
             'image_1' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:10240',  // Add image validation
             'image_2' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:10240',  // Add image validation
             'image_3' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:10240',  // Add image validation
@@ -202,8 +220,6 @@ class DashboardController extends Controller
             'content' => 'required',
 
         ]);
-    
-      
     
         $image1 = $request->file('image_1');
         $image2 = $request->file('image_2');
@@ -292,7 +308,9 @@ class DashboardController extends Controller
         $product = new Product();
         $product->title = $request['title'];
         $product->description = $request['description'];
-        $product->category_id = $request['category_id'];
+        $product->category_id = $request['category_id3'];
+        $product->industry = $request['category_id1'];
+        $product->box = $request['category_id2'];
         $product->image_1 = $imagename1 ? asset('uploads/products/' . $imagename1) : null;
         $product->image_2 = $imagename2 ? asset('uploads/products/' . $imagename2) : null;
         $product->image_3 = $imagename3 ? asset('uploads/products/' . $imagename3) : null;
@@ -414,10 +432,10 @@ class DashboardController extends Controller
     }
     public function updateCategory(Request $request, $id)
     {
-        $uploadPath = '/home/onixuvjm/public_html/uploads/categories/';
-        $temppath = '/home/onixuvjm/public_html/uploads/temporary/';
-        // $uploadPath = 'uploads/categories/';
-        // $temppath = 'uploads/temporary/';
+        // $uploadPath = '/home/onixuvjm/public_html/uploads/categories/';
+        // $temppath = '/home/onixuvjm/public_html/uploads/temporary/';
+        $uploadPath = 'uploads/categories/';
+        $temppath = 'uploads/temporary/';
 
         // Validate input
         $validatedData = $request->validate([
@@ -426,6 +444,7 @@ class DashboardController extends Controller
             'nav_id' => 'required|max:255',
             'header_img' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:10240',
             'main_img' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:10240',
+            'icon' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:10240',  // 10 MB
         ]);
 
         // Find the category to update
@@ -493,6 +512,27 @@ class DashboardController extends Controller
             // Delete temporary main image
             File::delete($temppath . $main_img_name);
         }
+        if ($request->hasFile('icon')) {
+
+            if ($category->icon && File::exists(public_path(parse_url($category->icon, PHP_URL_PATH)))) {
+                File::delete(public_path(parse_url($category->icon, PHP_URL_PATH)));
+            }
+
+            $icon_img = $request->file('icon');
+            $icon_img_name = time() . '3.' . $icon_img->getClientOriginalExtension();
+            $icon_img->move($temppath, $icon_img_name);
+            $imgmanager = new ImageManager(new Driver());
+            $readimage3 = $imgmanager->read($temppath . $icon_img_name);
+            $size3 = min($readimage3->width(), $readimage3->height());
+            $readimage3->cover($size3, $size3)->save($uploadPath . $icon_img_name);
+
+            $imagePath3 = ($temppath . $icon_img_name);
+
+            $category->icon = asset('uploads/categories/' . $icon_img_name);
+
+
+            File::delete($imagePath3);
+        }
 
         // Save the updated category
         $category->save();
@@ -510,10 +550,10 @@ class DashboardController extends Controller
     
     public function update(Request $request, $id)
     {
-        $uploadPath = '/home/onixuvjm/public_html/uploads/products/';
-        $temppath = '/home/onixuvjm/public_html/uploads/temporary/';
-        // $uploadPath = 'uploads/products/';
-        // $temppath = 'uploads/temporary/';
+        // $uploadPath = '/home/onixuvjm/public_html/uploads/products/';
+        // $temppath = '/home/onixuvjm/public_html/uploads/temporary/';
+        $uploadPath = 'uploads/products/';
+        $temppath = 'uploads/temporary/';
 
         $product = Product::findOrFail($id);
     
@@ -521,7 +561,9 @@ class DashboardController extends Controller
         $validatedData = $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'required|string',
-            'category_id' => 'required|exists:categories,id',
+            'category_id1' => 'nullable|max:255',
+            'category_id2' => 'nullable|max:255',
+            'category_id3' => 'nullable|max:255',
             'image_1' => 'image|nullable',
             'image_2' => 'image|nullable',
             'image_3' => 'image|nullable',
@@ -533,7 +575,10 @@ class DashboardController extends Controller
         // Update product data
         $product->title = $validatedData['title'];
         $product->description = $validatedData['description'];
-        $product->category_id = $validatedData['category_id'];
+        // $product->category_id = $validatedData['category_id'];
+        $product->category_id = $request['category_id3'];
+        $product->industry = $request['category_id1'];
+        $product->box = $request['category_id2'];
         $product->heading2 = $request->input('heading2');
         $product->description2 = $request->input('description2');
         $product->content = $request->content;

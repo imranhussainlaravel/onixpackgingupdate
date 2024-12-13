@@ -32,11 +32,20 @@ class CategoryController extends Controller
             return redirect()->back()->withErrors('Category not found.');
         }
 
+        
         $productModel = new Product();
-        $products = $productModel->select('id','title','image_1') // Select specific columns
-        ->where('category_id', $category->id)->where('status', 'active') 
-        ->get()                    // Retrieve the results
-        ->toArray();   
+        $query = $productModel->select('id', 'title', 'image_1') // Select specific columns
+        ->where('status', 'active'); // Common condition
+    
+        if ($category->nav_id == '1') {
+            $query->where('industry', $category->id);
+        } elseif ($category->nav_id == '2') {
+            $query->where('box', $category->id);
+        } elseif ($category->nav_id == '3') {
+            $query->where('category_id', $category->id);
+        }
+        
+        $products = $query->get()->toArray();
         // echo $products->toSql();
 
 

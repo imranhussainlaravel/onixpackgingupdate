@@ -81,6 +81,15 @@
                 <textarea id="description" name="description" placeholder="Enter category description" required>{{ $category->description }}</textarea>
             </div>
 
+            <div class="form-group">
+                <label for="icon">Icon (chose only in case of update)</label>
+                <input type="file" id="icon" name="icon" accept="image/*">
+                <input type="text" id="icon_name" name="icon_name" placeholder="Enter icon name (e.g., 'home')" style="display:none;">
+                @error('icon')
+                    <div class="text-danger" style="color: red;">{{ $message }}</div>
+                @enderror
+            </div>    
+
             <!-- Nav ID (Dropdown) -->
             <div class="form-group">
                 <label for="nav_id">Navigation</label>

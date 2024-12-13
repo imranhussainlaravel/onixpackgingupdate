@@ -61,7 +61,7 @@
                             <tr>
                                 <th>#</th>
                                 <th>Title</th>
-                                <th>Category</th>
+                                {{-- <th>Category</th> --}}
                                 <th>Status</th>
                                 <th>Actions</th>
                             </tr>
@@ -71,36 +71,33 @@
                                 <tr>
                                     <td>{{$product->id}}</td>
                                     <td>{{$product->title}}</td>
-                                    <td>{!! $product->category_name !!}</td>
+                                    {{-- <td>{!! $product->category_name !!}</td> --}}
                                     <td>
-                                        @if ($product->category_name !== '<span style="color: red;">Category Deleted</span>')
-                                            <form action="{{ route('product.toggle-status', $product->id) }}" method="POST">
-                                                @csrf
-                                                <button type="submit" class="status {{$product->status == 'active' ? 'active' : 'inactive'}}">
-                                                    {{$product->status == 'active' ? 'Active' : 'Inactive'}}
-                                                </button>
-                                            </form>
-                                        @else
-                                        <a class="btn-details" style="margin-left: 10px; background-color: #A9A9A9; color: #d3d3d3; cursor: not-allowed; pointer-events: none;"> {{$product->status == 'active' ? 'Active' : 'Inactive'}}</a>
-                                        @endif
+                                        <form action="{{ route('product.toggle-status', $product->id) }}" method="POST">
+                                            @csrf
+                                            <button type="submit" class="status {{$product->status == 'active' ? 'active' : 'inactive'}}">
+                                                {{$product->status == 'active' ? 'Active' : 'Inactive'}}
+                                            </button>
+                                        </form>
+                                        
                                     </td>
                                     {{-- <td><button class="btn-details">Delete</button><button class="btn-details" style="margin-left: 10px">Edit</button></td> --}}
                                     <td>
-                                        @if ($product->category_name !== '<span style="color: red;">Category Deleted</span>')
+                                        {{-- @if ($product->category_name !== '<span style="color: red;">Category Deleted</span>') --}}
                                             <form action="{{ route('product.destroy', $product->id) }}" method="POST" style="display: inline;">
                                                 @csrf
                                                 @method('DELETE') <!-- This will allow us to specify the DELETE method -->
                                                 <button type="submit" class="btn-details" style="margin-left: 10px; background-color: #df4b30; color: white;">Delete</button>
                                             </form>
                                             <a href="{{ route('edit.product', $product->id) }}" class="btn-details" style="margin-left: 10px; background-color: #4CAF50; color: white;">Edit</a>
-                                        @else
-                                            <form action="{{ route('product.destroy', $product->id) }}" method="POST" style="display: inline;">
+                                        {{-- @else --}}
+                                            {{-- <form action="{{ route('product.destroy', $product->id) }}" method="POST" style="display: inline;">
                                                 @csrf
                                                 @method('DELETE') <!-- This will allow us to specify the DELETE method -->
                                                 <button type="submit" class="btn-details" style="margin-left: 10px; background-color: #df4b30; color: white;">Delete</button>
                                             </form>
                                             <a class="btn-details" style="margin-left: 10px; background-color: #A9A9A9; color: #d3d3d3; cursor: not-allowed; pointer-events: none;">Edit</a>
-                                        @endif
+                                        @endif --}}
                                     </td>
                                 </tr>
                                 @endforeach

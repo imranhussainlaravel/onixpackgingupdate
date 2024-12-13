@@ -11,7 +11,7 @@
             </div>
             <!-- Right Column for Text -->
             <div class="col-md-7 text-container d-flex flex-column justify-content-center no-mask" style="height: 400px;">
-                <h2>Custom {{ $category->title }}</h2>
+                <h2>{{ $category->title }}</h2>
                 <p>{{ $category->description}}</p>
                 <div>
                     <button class="btn-custom" onclick="document.getElementById('custom-quote-form').scrollIntoView({behavior: 'smooth'});">Get Free Quote</button>

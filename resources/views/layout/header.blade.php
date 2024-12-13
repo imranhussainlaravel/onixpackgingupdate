@@ -263,7 +263,12 @@
                             @foreach($nav1 as $item1)
                                 <a href="{{ route('product.show', ['id' => Str::slug($item1->title)]) }}" class="dropdown-item p-2 d-flex align-items-start">
                                     <div class="mr-3 wrap-icon">
-                                        <img src="{{$item1->icon}}" alt="{{ $item1->title }}" style="width: 30px; height: 30px;">
+                                        {{-- <img src="{{$item1->icon}}" alt="{{ $item1->title }}" style="width: 30px; height: 30px;"> --}}
+                                        <img 
+                                            src="{{ $item1->icon ? $item1->icon : URL('images/logo.png') }}" 
+                                            alt="{{ $item1->title }}" 
+                                            style="width: 30px; height: 30px;"
+                                        >
                                     </div>
                                     <div>
                                         <h3>{{ $item1->title }}</h3>
