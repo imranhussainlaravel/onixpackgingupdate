@@ -114,17 +114,7 @@
                 @enderror
             </div>
 
-            <!-- ICON -->
-            <div class="form-group">
-                <label for="icon">Icon</label>
-                <input type="file" id="icon" name="icon" accept="image/*">
-                <input type="text" id="icon_name" name="icon_name" placeholder="Enter icon name (e.g., 'home')" style="display:none;">
-                @error('icon')
-                    <div class="text-danger" style="color: red;">{{ $message }}</div>
-                @enderror
-            </div>            
-
-            <!-- Nav ID (Dropdown) -->
+         
             <div class="form-group">
                 <label for="nav_id">Navigation</label>
                 <select id="nav_id" name="nav_id" required>
@@ -134,6 +124,16 @@
                     <!-- Add more options as needed -->
                 </select>
                 @error('nav_id')
+                    <div class="text-danger" style="color: red;">{{ $message }}</div>
+                @enderror
+            </div>
+            
+            <!-- ICON -->
+            <div class="form-group" id="icon-containers-" style="display: none;">
+                <label for="icon">Icon (that required)</label>
+                <input type="file" id="icon" name="icon" accept="image/*">
+                <input type="text" id="icon_name" name="icon_name" placeholder="Enter icon name (e.g., 'home')" style="display:none;">
+                @error('icon')
                     <div class="text-danger" style="color: red;">{{ $message }}</div>
                 @enderror
             </div>
@@ -171,6 +171,23 @@
             </div>
         </form>
     </div>
+
+    <script>
+        document.getElementById('nav_id').addEventListener('change', function () {
+            const iconContainer = document.getElementById('icon-containers-');
+            const selectedValue = this.value;
+    
+            // Show the icon upload field only if the selected value is 1
+            if (selectedValue === '1') {
+                iconContainer.style.display = 'block';
+            } else {
+                iconContainer.style.display = 'none';
+            }
+        });
+    
+        // Trigger change event on page load to handle old input value
+        document.getElementById('nav_id').dispatchEvent(new Event('change'));
+    </script>
 
     <script>
     let headerCropper;
