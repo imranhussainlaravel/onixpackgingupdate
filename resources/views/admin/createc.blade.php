@@ -130,7 +130,7 @@
             
             <!-- ICON -->
             <div class="form-group" id="icon-containers-" style="display: none;">
-                <label for="icon">Icon (that required)</label>
+                <label for="icon_file">Icon (that required)</label>
                 <input type="file" id="icon" name="icon" accept="image/*">
                 <input type="text" id="icon_name" name="icon_name" placeholder="Enter icon name (e.g., 'home')" style="display:none;">
                 @error('icon')

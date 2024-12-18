@@ -178,14 +178,14 @@
         });
     });
 
-    function validateCaptcha() {
-        const captchaAnswer = document.getElementById('captcha').value;
-        if (captchaAnswer != '6') {
-            alert('Captcha is incorrect. Please try again.');
-            return false; // Prevent form submission
-        }
-        return true; // Allow form submission
-    }
+    // function validateCaptcha() {
+    //     const captchaAnswer = document.getElementById('captcha').value;
+    //     if (captchaAnswer != '6') {
+    //         alert('Captcha is incorrect. Please try again.');
+    //         return false; // Prevent form submission
+    //     }
+    //     return true; // Allow form submission
+    // }
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.js"></script>
 <!--Start of Tawk.to Script-->

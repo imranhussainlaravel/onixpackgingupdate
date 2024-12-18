@@ -12,8 +12,8 @@
     <!-- Custom CSS -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <!-- Your additional custom CSS -->
-    {{-- <link href="{{ asset('css/custom.css') }}" rel="stylesheet"> --}}
-    <link href="{{ asset('css/custom.css') }}?v={{ time() }}" rel="stylesheet">
+    <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
+    {{-- <link href="{{ asset('css/custom.css') }}?v={{ time() }}" rel="stylesheet"> --}}
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/js/bootstrap.bundle.min.js"></script>

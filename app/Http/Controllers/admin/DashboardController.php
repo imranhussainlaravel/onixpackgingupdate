@@ -96,7 +96,7 @@ class DashboardController extends Controller
             'nav_id' => 'required|max:255',
             'header_img' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:10240',  // 10 MB
             'main_img' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:10240',  // 10 MB
-            'icon' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:10240',  // 10 MB
+            'icon_file' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:10240',  // 10 MB
         ]);
 
 

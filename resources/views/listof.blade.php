@@ -4,13 +4,13 @@
     <div class="container">
         <div class="row align-items-center justify-content-center masked-container" style="height: 100%;" id=rowofp>
             <!-- Left Column for Image -->
-            <div class="col-md-5 d-flex justify-content-center">
+            <div class="col-md-4 d-flex justify-content-center">
                 <div class="image-container d-flex justify-content-center align-items-center">
                     <img src="{{ $category->header_img }}" alt="Custom Boxes" class="img-fluid">
                 </div>
             </div>
             <!-- Right Column for Text -->
-            <div class="col-md-7 text-container d-flex flex-column justify-content-center no-mask" style="height: 400px;">
+            <div class="col-md-8 text-container d-flex flex-column justify-content-center no-mask" style="height: 400px;">
                 <h2>{{ $category->title }}</h2>
                 <p>{{ $category->description}}</p>
                 <div>
