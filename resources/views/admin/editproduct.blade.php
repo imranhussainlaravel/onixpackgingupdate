@@ -111,56 +111,64 @@
                 </div>
 
                 <!-- Nav ID (Dropdown) -->
-                <div class="form-group">
+                {{-- <div class="form-group">
                     <label for="category_id">Category</label>
                     <select id="category_id" name="category_id" required>
                         @foreach ($categories as $category)
                             <option value="{{$category->id}}" {{ $category->id == $product->category_id ? 'selected' : '' }}>{{$category->title}}</option>
                         @endforeach
                     </select>
-                </div>
+                </div> --}}
 
                 <div class="form-group">
                     <label for="nav_id1">Boxes by Industry</label>
-                    <select id="nav_id1" name="category_id1">
+                    <select id="nav_id1" name="category_id1" class="form-control">
                         <option value="">Select an Option (if needed)</option>
                         @foreach ($nav1 as $category1)
-                            {{-- <option value="{{ $category1->id }}" {{ old('category_id') == $category1->id ? 'selected' : '' }}>{{ $category1->title }}</option> --}}
-                            <option value="{{$category1->id}}" {{ $category1->id == $product->category_id ? 'selected' : '' }}>{{$category1->title}}</option>
+                            <option value="{{ $category1->id }}" 
+                                {{ $category1->id == $product->industry ? 'selected' : '' }}>
+                                {{ $category1->title }}
+                            </option>
                         @endforeach
                     </select>
                     @error('category_id1')
-                        <div class="text-danger" style="color: red;">{{ $message }}</div>
+                        <div class="text-danger">{{ $message }}</div>
                     @enderror
                 </div>
-    
+                
                 <div class="form-group">
                     <label for="nav_id2">Boxes by Material</label>
-                    <select id="nav_id2" name="category_id2">
+                    <select id="nav_id2" name="category_id2" class="form-control">
                         <option value="">Select an Option (if needed)</option>
                         @foreach ($nav2 as $category2)
-                            {{-- <option value="{{ $category2->id }}" {{ old('category_id') == $category2->id ? 'selected' : '' }}>{{ $category2->title }}</option> --}}
-                            <option value="{{$category2->id}}" {{ $category2->id == $product->category_id ? 'selected' : '' }}>{{$category2->title}}</option>
+                            <option value="{{ $category2->id }}" 
+                                {{ $category2->id == $product->box ? 'selected' : '' }}>
+                                {{ $category2->title }}
+                            </option>
                         @endforeach
                     </select>
                     @error('category_id2')
-                        <div class="text-danger" style="color: red;">{{ $message }}</div>
+                        <div class="text-danger">{{ $message }}</div>
                     @enderror
                 </div>
-    
+                
                 <div class="form-group">
                     <label for="nav_id3">Boxes by Style</label>
-                    <select id="nav_id3" name="category_id3">
+                    <select id="nav_id3" name="category_id3" class="form-control">
                         <option value="">Select an Option (if needed)</option>
                         @foreach ($nav3 as $category3)
-                            {{-- <option value="{{ $category3->id }}" {{ old('category_id') == $category3->id ? 'selected' : '' }}>{{ $category3->title }}</option> --}}
-                            <option value="{{$category3->id}}" {{ $category3->id == $product->category_id ? 'selected' : '' }}>{{$category3->title}}</option>
+                            <option value="{{ $category3->id }}" 
+                                {{ $category3->id == optional($product->category)->id ? 'selected' : '' }}>
+                                {{ $category3->title }}
+                            </option>
                         @endforeach
                     </select>
                     @error('category_id3')
-                        <div class="text-danger" style="color: red;">{{ $message }}</div>
+                        <div class="text-danger">{{ $message }}</div>
                     @enderror
                 </div>
+                
+                
 
                 <!-- Image Uploads -->
                 @for ($i = 1; $i <= 4; $i++)
@@ -171,16 +179,16 @@
                 @endfor
 
                 <!-- Heading Description -->
-                <div class="form-group">
+                {{-- <div class="form-group">
                     <label for="heading2">Heading Description</label>
                     <input type="text" id="heading2" name="heading2" value="{{ $product->heading2 }}" required>
-                </div>
+                </div> --}}
 
                 <!-- Second Description -->
-                <div class="form-group">
+                {{-- <div class="form-group">
                     <label for="description2">2nd Description</label>
                     <textarea id="description2" name="description2" required>{{ $product->description2 }}</textarea>
-                </div>
+                </div> --}}
 
                 <!-- Image 5 -->
                 <div class="form-group">

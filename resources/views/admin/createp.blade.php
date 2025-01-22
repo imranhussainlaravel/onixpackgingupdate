@@ -234,20 +234,20 @@
                     <canvas id="main_img_canvas" style="display:none;"></canvas>
                 </div> --}}
             </div>
-            <div class="form-group">
+            {{-- <div class="form-group">
                 <label for="title">Heading Description</label>
                 <input type="text" id="title" name="heading2" placeholder="Enter Heading" required value="{{ old('heading2') }}"></input>
                 @error('heading2')
                     <div class="text-danger" style="color: red;">{{ $message }}</div>
                 @enderror
             </div>
-            <div class="form-group">
-                <label for="description">2nD Description</label>
+            <div class="form-group"> --}}
+                {{-- <label for="description">2nD Description</label>
                 <textarea id="description2" name="description2" placeholder="Enter category 2nd description" required>{{ old('description2') }}</textarea>
                 @error('description2')
                     <div class="text-danger" style="color: red;">{{ $message }}</div>
                 @enderror
-             </div>
+             </div> --}}
             <div class="form-group">
                 <label for="main_img">Image 5 (1:1 Ratio) png(desc)</label>
                 <input type="file" id="main_img" name="image_5" accept="image/*" required>

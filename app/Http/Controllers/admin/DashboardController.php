@@ -18,7 +18,7 @@ class DashboardController extends Controller
     public function index()
     {
         $categoriesmodel = new Categories();
-        $categories = $categoriesmodel->select('id', 'title', 'status', 'nav_id')
+        $categories = $categoriesmodel->select('id', 'title', 'status', 'nav_id','sorting')
             ->orderBy('id', 'DESC') // Assuming 'id' indicates the latest records
             ->limit(10)
             ->get();
@@ -33,7 +33,7 @@ class DashboardController extends Controller
     public function categories() 
     {
         $categoriesmodel = new Categories();
-        $categories = $categoriesmodel->select('id', 'title', 'status', 'nav_id')
+        $categories = $categoriesmodel->select('id', 'title', 'status', 'nav_id','sorting')
             ->orderBy('id', 'DESC') // Assuming 'id' indicates the latest records
             ->get();
         return view('admin.category' , compact('categories'));
@@ -214,8 +214,8 @@ class DashboardController extends Controller
             'image_2' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:10240',  // Add image validation
             'image_3' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:10240',  // Add image validation
             'image_4' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:10240',  // Add image validation
-            'description2' => 'required',
-            'heading2' =>  'required',
+            'description2' => 'nullable',
+            'heading2' =>  'nullable',
             'image_5' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:10240',  // Add image validation
             'content' => 'required',
 
@@ -543,9 +543,29 @@ class DashboardController extends Controller
     public function edit($id)
     {
         $product = Product::findOrFail($id);
-        $categories = Categories::all(); // Get all categories for the dropdown
+        // $categories = Categories::all(); // Get all categories for the dropdown
     
-        return view('admin.editproduct', compact('product', 'categories'));
+        // return view('admin.editproduct', compact('product', 'categories'));
+
+        $categoriesmodel = new Categories();
+        $categories = $categoriesmodel->select('id', 'title','nav_id')
+            ->orderBy('id', 'DESC') // Assuming 'id' indicates the latest records
+            ->get();
+            $nav1 = [];
+            $nav2 = [];
+            $nav3 = [];
+        foreach($categories as $category){
+            if($category->nav_id == '1'){
+                $nav1[] = $category;
+            }
+            if($category->nav_id == '2'){
+                $nav2[] = $category;
+            }
+            if($category->nav_id == '3'){
+                $nav3[] = $category;
+            }
+        }
+        return view('admin.editproduct', compact('product','nav1', 'nav2', 'nav3'));
     }
     
     public function update(Request $request, $id)
@@ -754,5 +774,23 @@ class DashboardController extends Controller
 
         // Redirect back with success message
         return redirect()->back()->with('success', 'Blog deleted successfully.');
+    }
+    public function sorting($id){
+        $categoriesModel = new Categories();
+        $max = $categoriesModel->max('sorting');
+
+        $max = $max + 1;
+
+        $category = Categories::find($id);
+        
+        if ($category->sorting == '0') {
+            $category->sorting = $max;
+            $category->save();
+        } else {
+            $category->sorting = '0';
+            $category->save();
+        }
+        
+        return redirect()->back();
     }
 }

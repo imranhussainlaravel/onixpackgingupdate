@@ -18,7 +18,7 @@ use App\Http\kernel;
 // Route::get('/sendemail', [EmailController::class, 'sendEmail'])->name('send.email');
 
 Route::group([], function() {
-    Route::get('/', [CategoryController::class, 'team'])->name('about.team');
+    Route::get('/', [CategoryController::class, 'timmer'])->name('about.team');
     Route::get('/products/{id}', [CategoryController::class, 'show'])->name('product.show');
     Route::get('/list/product/{id}', [CategoryController::class, 'final'])->name('product.final');
     Route::post('/sendemail', [EmailController::class, 'sendEmail'])->name('send.email');
@@ -77,6 +77,8 @@ Route::group(['prefix' => 'admin'],function(){
         Route::get('product', [DashboardController::class, 'product'])->name('admin.product');
         Route::post('/category/toggle-status/{id}', [DashboardController::class, 'toggleStatus'])->name('category.toggle-status');
         Route::post('/product/toggle-status/{id}', [DashboardController::class, 'toggleStatuspro'])->name('product.toggle-status');
+
+        Route::post('/category/sorting/{id}', [DashboardController::class, 'sorting'])->name('category.sorting');
 
         Route::delete('/category/delete/{id}', [DashboardController::class, 'categorydestroy'])->name('category.destroy');
         Route::delete('/product/delete/{id}', [DashboardController::class, 'productdestroy'])->name('product.destroy');

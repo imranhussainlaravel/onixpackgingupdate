@@ -83,6 +83,7 @@
                                 <th>Title</th>
                                 <th>Navbar</th>
                                 <th>Status</th>
+                                <th>Listing</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -103,6 +104,14 @@
                                         @csrf
                                         <button type="submit" class="status {{$category->status == 'active' ? 'active' : 'inactive'}}">
                                             {{$category->status == 'active' ? 'Active' : 'Inactive'}}
+                                        </button>
+                                    </form>
+                                </td>
+                                <td>
+                                    <form action="{{ route('category.sorting', $category->id) }}" method="POST">
+                                        @csrf
+                                        <button type="submit" class="status {{$category->sorting != '0' ? 'active' : 'inactive'}}">
+                                            {{$category->sorting != '0' ? 'listed' : 'unlisted'}}
                                         </button>
                                     </form>
                                 </td>

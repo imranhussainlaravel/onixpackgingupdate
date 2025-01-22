@@ -13,9 +13,18 @@ class CategoryController extends Controller
 {
     public function index() {
 
-        $categories = Categories::where('status', 'active')->get();
+        // $categories = Categories::where('status', 'active')->get();
+        $categories = Categories::where('status', 'active')
+        ->where('sorting', '!=', '0') // Replace $someValue with the value you want to exclude
+        ->orderBy('sorting', 'asc') // Order by sorting in ascending order
+        ->get();
+
 
         return view('index' , compact('categories'));
+
+    }
+    public function timmer(){
+        return view('timer');
 
     }
     public function show($id)

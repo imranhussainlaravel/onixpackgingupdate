@@ -207,12 +207,11 @@
 </div>
 <div class="container my-5">
     <div class="row align-items-center">
-        <div class="col-md-7">
-            <h4 class="display-6 fw-bold">{{ $products->heading2 }}</h4>
+        <div class="col-md-8">
+            {{-- <h4 class="display-6 fw-bold">{{ $products->heading2 }}</h4>
             <p class="lead">
                 {{ $products->description2 ?? 'Kraft boxes with windows are the perfect modern packaging for any item. You can advertise your bakery, cosmetics, and grocery products via Kraft window boxes, and they will surely increase sales. Order Now!' }}
-            </p>
-            <p class="text-muted">More Than +5000 Satisfied Clients Worldwide</p>
+            </p> --}}
             <div class="d-flex flex-wrap my-3">
                 <!-- Client logos -->
                 {{-- <img src="{{ asset('images/client-logo-1.png') }}" alt="Client 1" class="img-fluid me-3" style="width: 50px;">
@@ -244,9 +243,11 @@
                     </div>
                 </div>
             </div>
+            <p class="text-muted">More Than +5000 Satisfied Clients Worldwide</p>
+
         </div>
 
-        <div class="col-md-5">
+        <div class="col-md-4">
             {{-- <img src="{{ asset('images/' . $image ?? 'placeholder.png') }}" alt="Custom Box with Windows" class="img-fluid"> --}}
             <img src="{{ $products->image_5}}" alt="Custom Box with Windows" class="img-fluid">
 
