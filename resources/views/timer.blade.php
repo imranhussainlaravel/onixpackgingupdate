@@ -20,12 +20,14 @@
         }
 
         .title {
-            font-size: 3rem; /* Default size */
-            font-weight: bold;
+            font-size: 3rem;
+            font-weight: bolder;
             margin-bottom: 10px;
-            color: #f39c12;
             text-transform: uppercase;
-            animation: subtleGlow 2s infinite alternate;
+            background: linear-gradient(90deg, #f39c12, #e67e22, #d35400);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 2px;
         }
 
         @keyframes subtleGlow {
