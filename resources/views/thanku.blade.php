@@ -7,7 +7,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
           <div class="thank-you-page-logo">
             <a href="#">
-                <img src="{{ URL('images/paclogo.png') }}" alt="Logo" class="img-fluid" style="max-width: 130px;">
+                <img src="{{ URL('images/logo.png') }}" alt="Logo" class="img-fluid" style="max-width: 130px;">
 					</a>
           </div>
           
