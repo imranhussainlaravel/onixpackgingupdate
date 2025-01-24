@@ -198,7 +198,7 @@ class EmailController extends Controller
             //             ->subject($teamsubject);
             // });
             // print_r("Email sent successfully");exit();
-            return back()->with('success', 'Email sent successfully!');
+            // return back()->with('success', 'Email sent successfully!');
             return redirect()->route('thank.you')->with('success', 'Email sent successfully!');
         } catch (\Exception $e) {
             // Log the error for debuggings
