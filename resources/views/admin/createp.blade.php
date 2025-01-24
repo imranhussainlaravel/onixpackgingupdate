@@ -103,22 +103,22 @@
         }
     </style>
     <script>
-        tinymce.init({
-        selector: '#editor',
-        plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist casechange formatpainter advtable',
-        toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table checklist | spellcheckdialog a11ycheck typography | align lineheight',
-        height: "100%",
-        image_title: true,
-        automatic_uploads: true,
-        file_picker_types: 'image',
-        // images_upload_url: '/uploads/blog',
-        images_upload_url: '/upload-image.php', 
-        setup: function (editor) {
-            editor.on('change', function () {
-                editor.save();
-            });
-        }
-    });
+    //     tinymce.init({
+    //     selector: '#editor',
+    //     plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist casechange formatpainter advtable',
+    //     toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table checklist | spellcheckdialog a11ycheck typography | align lineheight',
+    //     height: "100%",
+    //     image_title: true,
+    //     automatic_uploads: true,
+    //     file_picker_types: 'image',
+    //     // images_upload_url: '/uploads/blog',
+    //     images_upload_url: '/upload-image.php', 
+    //     setup: function (editor) {
+    //         editor.on('change', function () {
+    //             editor.save();
+    //         });
+    //     }
+    // });
 
     </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.15/cropper.min.css" />
@@ -263,9 +263,9 @@
 
     </div>
     <label for="content">3rd description (for long description)</label>
-    <div class="editor-container">
+    {{-- <div class="editor-container">
         <textarea id="editor" name="content"></textarea>
-    </div>
+    </div> --}}
 
 
     <!-- Submit Button -->

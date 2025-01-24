@@ -217,7 +217,6 @@ class DashboardController extends Controller
             'description2' => 'nullable',
             'heading2' =>  'nullable',
             'image_5' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:10240',  // Add image validation
-            'content' => 'required',
 
         ]);
     
@@ -318,7 +317,7 @@ class DashboardController extends Controller
         $product->image_5 = $imagename5 ? asset('uploads/products/' . $imagename5) : null;
         $product->description2 = $request['description2'];
         $product->heading2 = $request['heading2'];
-        $product->content = $request['content'];
+        // $product->content = $request['content'];
         $product->save();
     
         // return redirect()->back()->with('success', 'Product saved successfully!');admin.dashboard
