@@ -185,7 +185,7 @@ class EmailController extends Controller
         </body>
         </html>
         ";     
-        $teamemail = 'sales@nexonpackaging.com';
+        // $teamemail = 'sales@nexonpackaging.com';
         $teamsubject = 'New Custom Quote by customer';
 
         try {
@@ -193,10 +193,10 @@ class EmailController extends Controller
                 $message->to($details['email'])
                         ->subject($details['subject']);
             });
-            Mail::html($htmlContentteam, function ($message) use ($details, $teamemail, $teamsubject) {
-                $message->to($teamemail)
-                        ->subject($teamsubject);
-            });
+            // Mail::html($htmlContentteam, function ($message) use ($details, $teamemail, $teamsubject) {
+            //     $message->to($teamemail)
+            //             ->subject($teamsubject);
+            // });
             print_r("Email sent successfully");exit();
             return back()->with('success', 'Email sent successfully!');
             return redirect()->route('thank.you')->with('success', 'Email sent successfully!');
