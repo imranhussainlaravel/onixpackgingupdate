@@ -230,7 +230,7 @@
             <!-- Contact information on the right -->
             <div class="d-flex align-items-center">
                
-                <a href="mailto:sales@onixpackaging.com" id="email-link">
+                <a href="mailto:sales@nexonpackaging.com" id="email-link">
                     <i id="email-icon" class="fas fa-envelope"></i> sales@nexonpackaging.com
                 </a>
                 <span id="divider" class="mx-1">|</span>
@@ -239,13 +239,6 @@
                     <p class="call-text">Speak with a Packaging Expert</p>
                     <a href="tel:(000) 000-0000" class="call-number">(000) 000-0000</a>
                 </div>
-                 {{-- <a href="tel:(321) 310-0141" id="phone-link" class="me-1">
-                    <i id="phone-icon" class="fas fa-phone-alt"></i> (321) 310-0141
-                </a>
-                <span id="divider" class="mx-1">|</span>
-                <a href="mailto:sales@onixpackaging.com" id="email-link">
-                    <i id="email-icon" class="fas fa-envelope"></i> sales@onixpackaging.com
-                </a> --}}
             </div>
         </div>
         
