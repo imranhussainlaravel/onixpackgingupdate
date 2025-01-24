@@ -197,13 +197,13 @@ class EmailController extends Controller
             //     $message->to($teamemail)
             //             ->subject($teamsubject);
             // });
-            print_r("Email sent successfully");exit();
+            // print_r("Email sent successfully");exit();
             return back()->with('success', 'Email sent successfully!');
             return redirect()->route('thank.you')->with('success', 'Email sent successfully!');
         } catch (\Exception $e) {
             // Log the error for debuggings
             \Log::error('Email sending failed: ' . $e->getMessage());
-            print_r($e->getMessage());exit();
+            // print_r($e->getMessage());exit();
 
             return back()->with('error', 'Email sending failed!');
         }
