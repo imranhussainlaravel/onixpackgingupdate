@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Onix Packaging</title>
+    <title>NexOnPackaging</title>
     <link rel="icon" type="image/x-icon" href="{{ URL('images/logo.png') }}">
     <!-- Bootstrap CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/css/bootstrap.min.css" rel="stylesheet">
@@ -208,23 +208,36 @@
     <header class="bg-light py-2">
         <div class="container d-flex justify-content-between align-items-center">
             <!-- Logo on the left -->
-            <div>
+            {{-- <div>
                 <a href="{{ route('index.home') }}">
-                    <img src="{{ URL('images/paclogo.png') }}" alt="Logo" class="img-fluid" style="max-width: 230px;">
+                    <img src="{{ URL('images/logo.png') }}" alt="Logo" class="img-fluid" style="max-width: 60px;">
+                    <h1 class="header_title">NexOnPackaging</h1>
+                </a>
+            </div> --}}
+            <div style="display: flex; align-items: center;">
+                <a href="{{ route('index.home') }}" style="display: flex; align-items: center; text-decoration: none;">
+                    <img src="{{ URL('images/logo.png') }}" alt="Logo" class="img-fluid" style="max-width: 60px; margin-right: 10px;">
+                    <span style="font-weight: bold; font-size: 30px;
+                        background: linear-gradient(to right, #e2a17c 10%, #ca794d 100%, rgba(218, 122, 13, 0) 100%);
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: transparent;">
+                        NexOnPackaging
+                    </span>
                 </a>
             </div>
+            
         
             <!-- Contact information on the right -->
             <div class="d-flex align-items-center">
                
                 <a href="mailto:sales@onixpackaging.com" id="email-link">
-                    <i id="email-icon" class="fas fa-envelope"></i> sales@onixpackaging.com
+                    <i id="email-icon" class="fas fa-envelope"></i> sales@nexonpackaging.com
                 </a>
                 <span id="divider" class="mx-1">|</span>
 
                 <div class="call-section text-center">
                     <p class="call-text">Speak with a Packaging Expert</p>
-                    <a href="tel:(321) 310-0141" class="call-number">(321) 310-0141</a>
+                    <a href="tel:(000) 000-0000" class="call-number">(000) 000-0000</a>
                 </div>
                  {{-- <a href="tel:(321) 310-0141" id="phone-link" class="me-1">
                     <i id="phone-icon" class="fas fa-phone-alt"></i> (321) 310-0141

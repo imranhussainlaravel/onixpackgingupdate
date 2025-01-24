@@ -185,7 +185,7 @@ class EmailController extends Controller
         </body>
         </html>
         ";     
-        $teamemail = 'sales@onixpackaging.com';
+        $teamemail = 'sales@nexonpackaging.com';
         $teamsubject = 'New Custom Quote by customer';
 
         try {

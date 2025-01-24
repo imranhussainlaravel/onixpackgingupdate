@@ -109,11 +109,16 @@
         <div class="row">
             <!-- Branding and Collaboration Message -->
             <div class="col-md-4">
-                {{-- <div class="d-flex align-items-center mb-1"> --}}
-                <img src="{{ URL('images/paclogo2.png') }}" alt="Logo" class="d-flex align-items-center"
-                    style="max-width: 290px;"> <!-- Replace with your logo path -->
-                {{-- <h4 class="mb-0">Packaging</h4> --}}
-                {{-- </div> --}}
+                <div class="d-flex align-items-center">
+                    <img src="{{ URL('images/logo.png') }}" alt="Logo" style="max-width: 70px; margin-right: 10px;">
+                    <span style="font-weight: bold; font-size: 30px;
+                        background: linear-gradient(to right, #e2a17c 10%, #ca794d 100%, rgba(218, 122, 13, 0) 100%);
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: transparent;">
+                        NexOnPackaging
+                    </span>
+                </div>
+                
                 <p>We collaborate with people and brands.<br>Lets build something great together.</p>
                 <form class="d-flex align-items-center">
                     <input type="email" class="form-control me-2" placeholder="Your Email Address">
@@ -140,9 +145,9 @@
             <!-- Contact Section -->
             <div class="col-md-4">
                 <h5 class="mb-3">CONTACT US</h5>
-                <p><i class="bi bi-telephone-fill" style="color: #faa86d;"></i> (321) 310-0141</p>
-                <p><i class="bi bi-envelope-fill" style="color: #faa86d;"></i> sales@onixpackaging.com</p>
-                <p><i class="bi bi-geo-alt-fill" style="color: #faa86d;"></i> 7901 4th St N # 21594 St. Petersburg, FL
+                <p><i class="bi bi-telephone-fill" style="color: #faa86d;"></i> (000) 000-0000</p>
+                <p><i class="bi bi-envelope-fill" style="color: #faa86d;"></i> sales@nexonpackaging.com</p>
+                <p><i class="bi bi-geo-alt-fill" style="color: #faa86d;"></i> 7919 4th St N # 21584 St. Petersburg, FL
                     33702</p>
 
                 <!-- Social Media Icons -->
@@ -158,7 +163,7 @@
     </div>
 </footer>
 <div class="text-center mt-1 bg-light" style="color:black;">
-    <p class="mb-0">&copy; 2024, www.onixpackaging.com .All rights reserved.</p>
+    <p class="mb-0">&copy; 2024, www.nexonpackaging.com .All rights reserved.</p>
 </div>
 
 
