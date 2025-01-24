@@ -154,7 +154,7 @@
             <div class="form-group">
                 <label for="nav_id1">Boxes by Industry</label>
                 <select id="nav_id1" name="category_id1">
-                    <option value="">Select an Option (if needed)</option>
+                    <option value="0">Select an Option (if needed)</option>
                     @foreach ($nav1 as $category1)
                         <option value="{{ $category1->id }}" {{ old('category_id') == $category1->id ? 'selected' : '' }}>{{ $category1->title }}</option>
                     @endforeach
@@ -167,7 +167,7 @@
             <div class="form-group">
                 <label for="nav_id2">Boxes by Material</label>
                 <select id="nav_id2" name="category_id2">
-                    <option value="">Select an Option (if needed)</option>
+                    <option value="0">Select an Option (if needed)</option>
                     @foreach ($nav2 as $category2)
                         <option value="{{ $category2->id }}" {{ old('category_id') == $category2->id ? 'selected' : '' }}>{{ $category2->title }}</option>
                     @endforeach
@@ -180,7 +180,7 @@
             <div class="form-group">
                 <label for="nav_id3">Boxes by Style</label>
                 <select id="nav_id3" name="category_id3">
-                    <option value="">Select an Option (if needed)</option>
+                    <option value="0">Select an Option (if needed)</option>
                     @foreach ($nav3 as $category3)
                         <option value="{{ $category3->id }}" {{ old('category_id') == $category3->id ? 'selected' : '' }}>{{ $category3->title }}</option>
                     @endforeach
@@ -262,7 +262,7 @@
 
 
     </div>
-    <label for="content">3rd description (for long description)</label>
+    {{-- <label for="content">3rd description (for long description)</label> --}}
     {{-- <div class="editor-container">
         <textarea id="editor" name="content"></textarea>
     </div> --}}
