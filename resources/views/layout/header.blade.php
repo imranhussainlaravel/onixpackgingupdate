@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NexOnPackaging</title>
-    <link rel="icon" type="image/x-icon" href="{{ URL('images/logo.webp') }}">
+    <link rel="icon" type="image/x-icon" href="{{ URL('images/logo.png') }}">
     <!-- Bootstrap CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
@@ -216,7 +216,7 @@
             </div> --}}
             <div style="display: flex; align-items: center;">
                 <a href="{{ route('index.home') }}" style="display: flex; align-items: center; text-decoration: none;">
-                    <img src="{{ URL('images/logo.webp') }}" alt="Logo" class="img-fluid" style="max-width: 60px; margin-right: 10px;">
+                    <img src="{{ URL('images/logo.png') }}" alt="Logo" class="img-fluid" style="max-width: 60px; margin-right: 10px;">
                     <span style="font-weight: bold; font-size: 30px;
                         background: linear-gradient(to right, #e2a17c 10%, #ca794d 100%, rgba(218, 122, 13, 0) 100%);
                         -webkit-background-clip: text;
