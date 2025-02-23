@@ -219,7 +219,7 @@
             </div> --}}
             <div style="display: flex; align-items: center;">
                 <a href="{{ route('index.home') }}" style="display: flex; align-items: center; text-decoration: none;">
-                    <img src="{{ URL('images/logo.png') }}" alt="Logo" class="img-fluid" style="max-width: 60px; margin-right: 10px;">
+                    <img src="{{ asset('images/logo.png') }}" alt="Logo" class="img-fluid" style="max-width: 60px; margin-right: 10px;">
                     <span style="font-weight: bold; font-size: 30px;
                         background: linear-gradient(to right, #e2a17c 10%, #ca794d 100%, rgba(218, 122, 13, 0) 100%);
                         -webkit-background-clip: text;
