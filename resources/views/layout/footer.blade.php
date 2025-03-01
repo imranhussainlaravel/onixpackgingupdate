@@ -106,8 +106,8 @@
 
             @php
                 // Preserve CAPTCHA numbers on validation errors
-                $num1 = old('num1', rand(1, 10));
-                $num2 = old('num2', rand(1, 10));
+                $num1 = old('num1', rand(1, 7));
+                $num2 = old('num2', rand(1, 5));
             @endphp
 
             <div class="form-row" style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
