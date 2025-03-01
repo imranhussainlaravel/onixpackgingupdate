@@ -62,40 +62,75 @@
         <form class="px-3" action="{{ route('send.email') }}" method="POST">
             @csrf
             <div class="form-row">
-                <input type="text" placeholder="Name" class="form-control" required name="name">
-                <input type="text" placeholder="Phone No" class="form-control" required name="phone">
-                <input type="email" placeholder="Email Address" class="form-control" required name="email">
+                <input type="text" placeholder="Name" class="form-control" required 
+                       name="name" value="{{ old('name') }}">
+                <input type="text" placeholder="Phone No" class="form-control" required 
+                       name="phone" value="{{ old('phone') }}">
+                <input type="email" placeholder="Email Address" class="form-control" required 
+                       name="email" value="{{ old('email') }}">
             </div>
 
             <div class="form-row">
-                <input type="number" placeholder="Quantity" class="form-control" required name="quantity">
-                <input type="text" placeholder="Product Name" class="form-control" required name="product_name">
+                <input type="number" placeholder="Quantity" class="form-control" required 
+                       name="quantity" value="{{ old('quantity') }}">
+                <input type="text" placeholder="Product Name" class="form-control" required 
+                       name="product_name" value="{{ old('product_name') }}">
                 <select class="form-select" required id="color" name="color">
-                    <option selected disabled>Select Color</option>
-                    <option value="1">1 color</option>
-                    <option value="2">2 color</option>
-                    <option value="3">3 color</option>
-                    <option value="4">4 color</option>
-                    <option value="4/1">4/1 color</option>
-                    <option value="4/2">4/2 color</option>
-                    <option value="4/3">4/3 color</option>
-                    <option value="4/4">4/4 color</option>
+                    <option disabled>Select Color</option>
+                    @foreach(['1', '2', '3', '4', '4/1', '4/2', '4/3', '4/4'] as $color)
+                        <option value="{{ $color }}" {{ old('color') == $color ? 'selected' : '' }}>
+                            {{ $color }} color
+                        </option>
+                    @endforeach
                 </select>
             </div>
 
             <div class="form-row">
-                {{-- <label>Size:</label> --}}
-                <input type="text" placeholder="L" class="form-control" required name="length">
-                <input type="text" placeholder="W" class="form-control" required name="width">
-                <input type="text" placeholder="D" class="form-control" required name="depth">
+                <input type="text" placeholder="L" class="form-control" required 
+                       name="length" value="{{ old('length') }}">
+                <input type="text" placeholder="W" class="form-control" required 
+                       name="width" value="{{ old('width') }}">
+                <input type="text" placeholder="D" class="form-control" required 
+                       name="depth" value="{{ old('depth') }}">
                 <select class="form-select form-select-sm" required name="measurement_unit">
-                    <option selected value="inch">inch</option>
-                    <option value="cm">cm</option>
-                    <option value="mm">mm</option>
+                    @foreach(['inch', 'cm', 'mm'] as $unit)
+                        <option value="{{ $unit }}" {{ old('measurement_unit') == $unit ? 'selected' : '' }}>
+                            {{ $unit }}
+                        </option>
+                    @endforeach
                 </select>
             </div>
 
-            <textarea placeholder="Write short message" class="form-control" rows="4" required name="description"></textarea>
+            <textarea placeholder="Write short message" class="form-control" rows="4" required 
+                      name="description">{{ old('description') }}</textarea>
+
+            @php
+                // Preserve CAPTCHA numbers on validation errors
+                $num1 = old('num1', rand(1, 10));
+                $num2 = old('num2', rand(1, 10));
+            @endphp
+
+            <div class="form-row" style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
+                <label style="margin: 0; white-space: nowrap;">
+                    <span style="font-size: 0.9em; margin-right: 8px;">{{ $num1 }} + {{ $num2 }} =</span>
+                </label>
+                <input type="number" 
+                       style="height: 35px; width: auto; padding: 5px 8px; font-size: 0.9em; box-sizing: border-box; margin-left: auto;"
+                       class="form-control @error('captcha_answer') is-invalid @enderror" 
+                       placeholder="Enter sum" 
+                       required 
+                       name="captcha_answer"
+                       value="{{ old('captcha_answer') }}">
+                
+                @error('captcha_answer')
+                    <div class="invalid-feedback" style="color: #dc3545; font-size: 0.8em; margin-top: 5px;">
+                        {{ $message }}
+                    </div>
+                @enderror
+            </div>
+            
+            <input type="hidden" name="num1" value="{{ $num1 }}">
+            <input type="hidden" name="num2" value="{{ $num2 }}">
 
             <button type="submit" class="submit-btn">Submit</button>
         </form>

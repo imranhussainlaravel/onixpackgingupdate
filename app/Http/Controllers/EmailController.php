@@ -22,8 +22,15 @@ class EmailController extends Controller
             'depth' => 'nullable|string',
             'measurement_unit' => 'nullable|string',
             'description' => 'nullable|string',
+            'num1' => 'required|integer|min:1|max:10',
+            'num2' => 'required|integer|min:1|max:10',
+            'captcha_answer' => 'required|integer',
         ]);
-        
+        $expectedAnswer = $request['num1'] + $request['num2'];
+
+        if ($request['captcha_answer'] != $expectedAnswer) {
+        return back()->withErrors(['captcha_answer' => 'Wrong Captcha. Please try again.'])->withInput();
+        }
         // Gather the email details
         $details = [
             'name' => $request->name,

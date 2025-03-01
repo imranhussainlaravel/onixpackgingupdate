@@ -129,73 +129,124 @@
                                 <h5 class="custom-id">ID {{$products->id}}</h5>
                             </div>
                         </div>
+                        
+                        <!-- Name -->
                         <div class="form-group">
-                            <input type="text" class="form-control form-control-sm required mt-3" id="name" required placeholder="Name" name="name">
+                            <input type="text" class="form-control form-control-sm required mt-3 @error('name') is-invalid @enderror" 
+                                   id="name" required placeholder="Name" name="name" value="{{ old('name') }}">
+                            @error('name')<div class="invalid-feedback">{{ $message }}</div>@enderror
                         </div>
+                    
+                        <!-- Phone -->
                         <div class="form-group input-placeholder">
-                            <input type="text" class="form-control form-control-sm required mt-3" id="phone" required placeholder="Phone" name="phone">
+                            <input type="text" class="form-control form-control-sm required mt-3 @error('phone') is-invalid @enderror" 
+                                   id="phone" required placeholder="Phone" name="phone" value="{{ old('phone') }}">
+                            @error('phone')<div class="invalid-feedback">{{ $message }}</div>@enderror
                         </div>
+                    
+                        <!-- Email -->
                         <div class="form-group input-placeholder">
-                            <input type="email" class="form-control form-control-sm required mt-3" id="email" required placeholder="Email" name="email">
+                            <input type="email" class="form-control form-control-sm required mt-3 @error('email') is-invalid @enderror" 
+                                   id="email" required placeholder="Email" name="email" value="{{ old('email') }}">
+                            @error('email')<div class="invalid-feedback">{{ $message }}</div>@enderror
                         </div>
-            
+                    
+                        <!-- Product Info -->
                         <div class="d-flex flex-row align-items-start mt-3">
                             <div class="form-group input-placeholder me-2" style="flex-grow: 1;">
-                                <input type="text" class="form-control form-control-sm required mt-2" id="product_name" placeholder="Product Name" name="product_name">
+                                <input type="text" class="form-control form-control-sm required mt-2 @error('product_name') is-invalid @enderror" 
+                                       id="product_name" placeholder="Product Name" name="product_name" value="{{ old('product_name') }}">
+                                @error('product_name')<div class="invalid-feedback">{{ $message }}</div>@enderror
                             </div>
                             <div class="form-group input-placeholder me-2" style="flex-grow: 1;">
-                                <input type="number" class="form-control form-control-sm required mt-2" id="quantity" required placeholder="Quantity" name="quantity">
+                                <input type="number" class="form-control form-control-sm required mt-2 @error('quantity') is-invalid @enderror" 
+                                       id="quantity" required placeholder="Quantity" name="quantity" value="{{ old('quantity') }}">
+                                @error('quantity')<div class="invalid-feedback">{{ $message }}</div>@enderror
                             </div>
                             <div class="form-group input-placeholder" style="flex-grow: 1;">
-                                <select class="form-control form-control-sm mt-2" id="color" name="color">
-                                    <option value="" disabled selected>Select Color</option>
-                                    <option value="1 color">1 color</option>
-                                    <option value="2 color">2 color</option>
-                                    <option value="3 color">3 color</option>
-                                    <option value="4 color">4 color</option>
-                                    <option value="4/1 color">4/1 color</option>
-                                    <option value="4/2 color">4/2 color</option>
-                                    <option value="4/3 color">4/3 color</option>
-                                    <option value="4/4 color">4/4 color</option>
+                                <select class="form-control form-control-sm mt-2 @error('color') is-invalid @enderror" id="color" name="color">
+                                    <option value="" disabled {{ !old('color') ? 'selected' : '' }}>Select Color</option>
+                                    @foreach(['1 color', '2 color', '3 color', '4 color', '4/1 color', '4/2 color', '4/3 color', '4/4 color'] as $option)
+                                        <option value="{{ $option }}" {{ old('color') == $option ? 'selected' : '' }}>
+                                            {{ $option }}
+                                        </option>
+                                    @endforeach
                                 </select>
+                                @error('color')<div class="invalid-feedback">{{ $message }}</div>@enderror
                             </div>
                         </div>
-                        
-                        
-            
+                    
+                        <!-- Dimensions -->
                         <div class="d-flex">
                             <div class="flex-fill me-2">
                                 <div class="input-group input-placeholder">
-                                    <input type="text" class="form-control form-control-sm required mt-3" id="length" required placeholder=" L" name="length">
+                                    <input type="text" class="form-control form-control-sm required mt-3 @error('length') is-invalid @enderror" 
+                                           id="length" required placeholder=" L" name="length" value="{{ old('length') }}">
+                                    @error('length')<div class="invalid-feedback">{{ $message }}</div>@enderror
                                 </div>
                             </div>
                             <div class="flex-fill me-2">
                                 <div class="input-group input-placeholder">
-                                    <input type="text" class="form-control form-control-sm required mt-3" id="width" required placeholder=" W" name="width">
+                                    <input type="text" class="form-control form-control-sm required mt-3 @error('width') is-invalid @enderror" 
+                                           id="width" required placeholder=" W" name="width" value="{{ old('width') }}">
+                                    @error('width')<div class="invalid-feedback">{{ $message }}</div>@enderror
                                 </div>
                             </div>
                             <div class="flex-fill me-2">
                                 <div class="input-group input-placeholder">
-                                    <input type="text" class="form-control form-control-sm required mt-3" id="depth" required placeholder=" D" name="depth">
+                                    <input type="text" class="form-control form-control-sm required mt-3 @error('depth') is-invalid @enderror" 
+                                           id="depth" required placeholder=" D" name="depth" value="{{ old('depth') }}">
+                                    @error('depth')<div class="invalid-feedback">{{ $message }}</div>@enderror
                                 </div>
                             </div>
                             <div class="flex-fill me-2 mt-3">
-                                <select class="custom-select" aria-label="Measurement unit" name="measurement_unit">
-                                    <option value="cm">cm</option>
-                                    <option value="inch">inch</option>
-                                    <option value="mm">mm</option>
-
-                                </select>                            
+                                <select class="custom-select @error('measurement_unit') is-invalid @enderror" 
+                                        aria-label="Measurement unit" name="measurement_unit">
+                                    @foreach(['cm', 'inch', 'mm'] as $unit)
+                                        <option value="{{ $unit }}" {{ old('measurement_unit') == $unit ? 'selected' : '' }}>
+                                            {{ $unit }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                                @error('measurement_unit')<div class="invalid-feedback">{{ $message }}</div>@enderror
                             </div>
                         </div>
-            
+                    
+                        <!-- Description -->
                         <div class="form-group input-placeholder">
-                            <textarea class="form-control mt-3" rows="3" id="description" placeholder="Describe here..." name="description"></textarea>
+                            <textarea class="form-control mt-3 @error('description') is-invalid @enderror" rows="3" 
+                                      id="description" placeholder="Describe here..." 
+                                      name="description">{{ old('description') }}</textarea>
+                            @error('description')<div class="invalid-feedback">{{ $message }}</div>@enderror
                         </div>
-                        {{-- <div class="form-group">
-                            {{-- {!! Captcha::img() !!} <!-- Display the captcha image -->
-                            <input type="text" name="_answer" class="form-control" placeholder="Enter Captcha" required>
-                        </div> --}}
+                    
+                        <!-- CAPTCHA -->
+                        @php
+                            // Preserve CAPTCHA numbers on validation errors
+                            $num1 = old('num1', rand(1, 10));
+                            $num2 = old('num2', rand(1, 10));
+                        @endphp
+                        <div class="form-row" style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
+                            <input type="hidden" name="num1" value="{{ $num1 }}">
+                            <input type="hidden" name="num2" value="{{ $num2 }}">
+                            
+                            <label style="margin: 0; white-space: nowrap;">
+                                <span style="font-size: 0.9em; margin-right: 8px;">{{ $num1 }} + {{ $num2 }} =</span>
+                            </label>
+                            <input type="number" 
+                                   style="height: 35px; width: auto; padding: 5px 8px; font-size: 0.9em; box-sizing: border-box; margin-left: auto;"
+                                   class="form-control @error('captcha_answer') is-invalid @enderror" 
+                                   placeholder="Enter sum" 
+                                   required 
+                                   name="captcha_answer"
+                                   value="{{ old('captcha_answer') }}">
+                            @error('captcha_answer')
+                                <div class="invalid-feedback" style="color: #dc3545; font-size: 0.8em; margin-top: 5px;">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                    
                         <button type="submit" class="btn mt-3 col-5" style="background-color: #fdad82;color:white;font-weight:bold;">Submit</button>
                     </form>
                 </div>

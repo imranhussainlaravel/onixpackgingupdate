@@ -200,7 +200,15 @@
         max-width: 16.66%;
     }
 }
+.is-invalid {
+    border-color: #dc3545 !important;
+}
 
+.invalid-feedback {
+    color: #dc3545;
+    font-size: 0.8em;
+    margin-top: 0.25rem;
+}
 
 
     </style>
